@@ -1,0 +1,29 @@
+/* @File: styles.css 
+ * These styles will be here quite a while serving smiles from aisle to aisle.
+*/
+
+html {
+    height: 100%;
+}
+
+body {
+    background: #333;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a[href]{
+    text-decoration: none;
+}
+a[href]:link{
+    color: #cc0;
+}
+a[href]:visited{
+    color: #aa0;
+}
+a[href]:active{
+    color: #bb0;
+}
+a[href]:hover{
+    color: #ff0;
+}
