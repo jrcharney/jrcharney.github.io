@@ -27,3 +27,99 @@ a[href]:active{
 a[href]:hover{
     color: #ff0;
 }
+
+header, nav, main, footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 3px;   /* Everybody needs a little padding */
+}
+
+header, nav, main {     /* Footer doesn't get a box shadow */
+    box-shadow: 2px 2px 5px #111;
+}
+
+header {
+    background-color: #ee0;
+    color: #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+header > hgroup {
+    text-align: center;
+    text-shadow: 2px 2px 5px #111;
+}
+
+header > hgroup > h1 {
+    font-size: 36pt;
+}
+header > hgroup > h2 {
+    font-size: 18pt;
+    /* line-height: 14pt; */
+}
+
+nav {
+    background-color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* height: 30px; */
+    text-align: center;
+}
+
+nav > ul {
+    list-style-type: none;
+    padding: 0;         /* Set padding (probably padding-left) to get rid of the list gap on the left. */
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    justify-content: space-evenly;
+}
+
+nav > ul > li {
+    display: block;
+    margin: 0;
+    min-width: 25%;
+}
+
+nav > ul > li:nth-of-type(1) {
+    font-weight: bold;
+}
+
+nav > ul > li:not(:nth-of-type(1)):hover {
+    background-color: #ee0;
+    color: #000;
+    transition: background-color .5s;
+
+}
+
+nav > ul > li:not(:nth-of-type(1)):hover a {
+    color: #000;
+    transition: color .5s;
+}
+
+/* Main should stretch down to the bottom */
+main {
+    margin-top: 0;
+    background-color: #111;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: calc(75vh - 50px);  /* TODO: Play around with this a little more. See what's right. */
+}
+
+/* TODO: Footer needs to stick to the bottom. */
+footer {
+    height: 50px;
+    font-size: 9pt;
+    vertical-align: bottom;
+}
+
+article > h2 {
+    text-shadow: 2px 2px 5px #222;
+}
