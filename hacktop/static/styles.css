@@ -1,0 +1,64 @@
+/* File: hacktop/static/styles.css */
+:root {
+    --bg: #333;
+    --fg: #fff;
+    --accent: #c55; /* or some raspberry color */
+    --hlink: #8f8;
+    --link: #7e7;
+    --vlink: #6d6;
+    --alink: #5c5;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: sans-serif;
+}
+
+header, main, footer {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    background-color: var(--accent);
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+a[href] {
+    text-decoration: none;
+}
+a[href]:link{
+    color: var(--link);
+}
+a[href]:hover{
+    color: var(--hlink);
+}
+a[href]:visited{
+    color: var(--vlink);
+}
+a[href]:active{
+    color: var(--alink);
+}
+
+#content {
+    width: 80%;
+}
+#side {
+    width: 20%;
+}
+
+#todo ul li {
+    list-style-type: square;
+}
+#todo ul li.done {}

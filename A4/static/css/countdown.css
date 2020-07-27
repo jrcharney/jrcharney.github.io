@@ -1,0 +1,43 @@
+/* File: countdown.css
+ * Info: styles for countdown.js objects
+ * TODO: fix the text shadow
+ */
+
+:root {
+    clkshadow: 2px 2px 5px 5px #111;
+}
+
+
+/* Clock container */
+#clock {
+    display: block;
+    width: 100%;
+    border: 1px outset #222;
+    border-radius: 5px;
+    box-shadow: var(--clockshadow);
+}
+
+/* Clock placeholder */
+#countdown {
+    width: 100%;
+    text-align: center;
+    font-size: 48pt;
+    font-weight: bold;
+    text-shadow: var(--clockshadow);
+}
+
+/* Clock deadline.
+ * NOTE: Set display: hidden (or none?) to hide this.
+ */
+#deadline {
+    width: 100%;
+    text-align: center;
+    font-size: 10pt;
+}
+
+#clockmsg {
+    width: 100%;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+}

@@ -1,0 +1,46 @@
+/* File: style.css */
+:root {
+    --bgc: #333;
+    --fgc: #fff;
+
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--bgc);
+    color: var(--fgc);
+}
+
+/* It's recommend to use flexboxes instead of float/clear */
+.twocol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#wide {
+    display: block;
+    width: 75%;
+}
+
+#wide > .app {
+    width: 100%;
+    min-width: 600px;
+}
+
+#side {
+    display: block;
+    width: 25%;
+}
+
+#side > .app {
+    width: 100%;
+    min-width: 300px;
+}

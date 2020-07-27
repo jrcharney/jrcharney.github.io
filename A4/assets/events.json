@@ -1,0 +1,142 @@
+[
+    {
+        id : 1,
+        date_time_start: "2020-06-29, 05:30PM CDT",
+        date_time_stop:  "2020-06-29, 08:30PM CDT",
+        name : "LC101",
+        desc : ""
+    },
+    {
+        id : 2,
+        date_time_start: "2020-06-30, 05:30PM CDT",
+        date_time_stop:  "2020-06-30, 08:30PM CDT",
+        name : "PQ",
+        desc : ""
+    },
+    {
+        id : 3,
+        date_time_start: "2020-07-02, 05:30PM CDT",
+        date_time_stop:  "2020-07-02, 08:30PM CDT",
+        name : "LC101",
+        desc : ""
+    },
+    {
+        id : 4,
+        date_time_start: "2020-07-06, 05:30PM CDT",
+        date_time_stop:  "2020-07-06, 08:30PM CDT",
+        name : "NO LC101",
+        desc : ""
+    },
+    {
+        id : 5,
+        date_time_start: "2020-07-07, 05:30PM CDT",
+        date_time_stop:  "2020-07-07, 08:30PM CDT",
+        name : "PQ",
+        desc : ""
+    },
+    {
+        id : 6,
+        date_time_start: "2020-07-09, 05:30PM CDT",
+        date_time_stop:  "2020-07-09, 08:30PM CDT",
+        name : "LC101",
+        desc : ""
+    },
+    {
+        id : 7,
+        date_time_start: "2020-07-13, 05:30PM CDT",
+        date_time_stop:  "2020-07-13, 08:30PM CDT",
+        name : "LC101",
+        desc : ""
+    },
+    {
+        id : 8,
+        date_time_start: "2020-07-14, 05:30PM CDT",
+        date_time_stop:  "2020-07-14, 08:30PM CDT",
+        name : "PQ",
+        desc : ""
+    },
+    {
+        id : 9,
+        date_time_start: "2020-07-14, 00:00AM CDT",
+        date_time_stop:  "2020-07-14, 11:59PM CDT",
+        name : "X-DAY!",
+        desc : "Times Up! A4 MUST be complete!"
+    },
+    {
+        id : 10,
+        date_time_start: "2020-07-14, 05:30PM CDT",
+        date_time_stop:  "2020-07-14, 08:30PM CDT",
+        name : "LC101",
+        desc : "Last Class!"
+    },
+    {
+        id : 11,
+        date_time_start: "2020-07-30, 05:30PM CDT",
+        date_time_stop:  "2020-07-30, 08:30PM CDT",
+        name : "Graduation",
+        desc : "Note: Time is not know. This may change."
+    },
+    {
+        id : 12,
+        date_time_start: "2020-08-03, 05:30PM CDT",
+        date_time_stop:  "2020-08-03, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "1 of 8"
+    },
+    {
+        id : 13,
+        date_time_start: "2020-08-10, 05:30PM CDT",
+        date_time_stop:  "2020-08-10, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "2 of 8"
+    },
+    {
+        id : 14,
+        date_time_start: "2020-08-17, 05:30PM CDT",
+        date_time_stop:  "2020-08-17, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "3 of 8"
+    },
+    {
+        id : 15,
+        date_time_start: "2020-08-24, 05:30PM CDT",
+        date_time_stop:  "2020-08-24, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "4 of 8"
+    },
+    {
+        id : 16,
+        date_time_start: "2020-08-31, 05:30PM CDT",
+        date_time_stop:  "2020-08-31, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "5 of 8"
+    },
+    {
+        id : 17,
+        date_time_start: "2020-09-07, 05:30PM CDT",
+        date_time_stop:  "2020-09-07, 08:30PM CDT",
+        name : "No Liftoff",
+        desc : "Labor Day"
+    },
+    {
+        id : 18,
+        date_time_start: "2020-09-14, 05:30PM CDT",
+        date_time_stop:  "2020-09-14, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "6 of 8"
+    },
+    {
+        id : 19,
+        date_time_start: "2020-09-21, 05:30PM CDT",
+        date_time_stop:  "2020-09-21, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "7 of 8"
+    },
+    {
+        id : 20,
+        date_time_start: "2020-09-28, 05:30PM CDT",
+        date_time_stop:  "2020-09-28, 08:30PM CDT",
+        name : "Liftoff",
+        desc : "8 of 8"
+    }
+]

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Unit 2 : Assignment 4 : The Clock is running</title>
+        <link rel="stylesheet" type="text/css" href="./static/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="./static/css/countdown.css">
+        <script type="text/javascript" src="./static/js/scripts.js"></script>
+        <script type="text/javascript" src="./static/js/countdown.js"></script>
+        <script type="text/javascript">
+// TODO: Which is better?
+//document.addEventListener("DOMContentLoaded",function());
+//window.addEventListener("load",function());
+document.addEventListener("DOMContentLoaded",function(){
+    let countdown = new Countdown("#countdown",document.getElementById("deadline").innerText);
+    countdown.run();
+    let calendar  = new Calendar("#cal","./assets/events.json");
+});
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Tech Jobs Persistent</h1>
+            <h2>SQL solutions</h2>
+        </header>
+        <main class="twocol">
+            <div id="wide">
+                <div id="clock" class="app">
+                    <div id="clockmsg">The Clock is ticking!</div>
+                    <div id="countdown">00:00:00:00</div>
+                    <div id="deadline">July 16, 2020, 5:00 PM CDT</div>
+                </div>
+                <!-- TODO: Have a script generate this -->
+                <!-- TODO: Change tables to Grid layout? -->
+                <!-- Use a database to store data. (How? This is going on Github) -->
+                <div id="cal" class="app">
+                    <table>
+                        <thead>
+                            <th class="month" colspan="7">
+                                <h1>July</h1>
+                            </th>
+                            <tr>
+                                <th class="dotw"><abbr title="Sunday">Sun</abbr></th>
+                                <th class="dotw"><abbr title="Monday">Mon</abbr></th>
+                                <th class="dotw"><abbr title="Tuesday">Tue</abbr></th>
+                                <th class="dotw"><abbr title="Wednesday">Wed</abbr></th>
+                                <th class="dotw"><abbr title="Thursday">Thu</abbr></th>
+                                <th class="dotw"><abbr title="Friday">Fri</abbr></th>
+                                <th class="dotw"><abbr title="Saturday">Sat</abbr></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="week">
+                                <td class="day crossout">
+                                    <div class="daynum outmonth">28</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day crossout">
+                                    <div class="daynum outmonth">29</div>
+                                    <div class="calevents">
+                                        <div class="calevent">LC101</div>
+                                    </div>
+                                </td>
+                                <td class="day crossout">
+                                    <div class="daynum outmonth">30</div>
+                                    <div class="calevents">
+                                        <div class="calevent">PQ</div>
+                                    </div>
+                                </td>
+                                <td class="day crossout">
+                                    <div class="daynum">1</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">2</div>
+                                    <div class="calevents">
+                                        <div class="calevent">LC101</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">3</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">4</div>
+                                    <div class="calevents"></div>
+                                </td>
+                            </tr>
+                            <tr class="week">
+                                <td class="day">
+                                    <div class="daynum">5</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">6</div>
+                                    <div class="calevents">
+                                        <div class="calevent">No LC101</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">7</div>
+                                    <div class="calevents">
+                                        <div class="calevent">PQ</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">8</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">9</div>
+                                    <div class="calevents">
+                                        <div class="calevent">LC101</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">10</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">11</div>
+                                    <div class="calevents"></div>
+                                </td>
+                            </tr>
+                            <tr class="week">
+                                <td class="day">
+                                    <div class="daynum">12</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">13</div>
+                                    <div class="calevents">
+                                        <div class="calevent">LC101</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">14</div>
+                                    <div class="calevents">
+                                        <div class="calevent">PQ</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">15</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">16</div>
+                                    <div class="calevents">
+                                        <div class="calevent">X-DAY!</div>
+                                        <div class="calevent">LC101</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">17</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">18</div>
+                                    <div class="calevents"></div>
+                                </td>
+                            </tr>
+                            <tr class="week">
+                                <td class="day">
+                                    <div class="daynum">19</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">20</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">21</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">22</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">23</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">24</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">25</div>
+                                    <div class="calevents"></div>
+                                </td>
+                            </tr>
+                            <tr class="week">
+                                <td class="day">
+                                    <div class="daynum">26</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">27</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">28</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">29</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">30</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum">31</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">1</div>
+                                    <div class="calevents"></div>
+                                </td>
+                            </tr>
+                            <tr class="week">
+                                <td class="day">
+                                    <div class="daynum outmonth">2</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">3</div>
+                                    <div class="calevents">
+                                        <div class="calevent">Liftoff!</div>
+                                    </div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">4</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">5</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">6</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">7</div>
+                                    <div class="calevents"></div>
+                                </td>
+                                <td class="day">
+                                    <div class="daynum outmonth">8</div>
+                                    <div class="calevents"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="side">
+                <div class="app" id="calsummary">
+                    <!-- TODO: have the apptitle allow  for items to be moved around or hidden/expanded -->
+                    <div class="apptitle">Calendar Summary</div>
+                    <div id="viewaddcse">
+                        <button title="Add an event">+</button>
+                    </div>
+                    <div id="addcse">
+                        <button title="Cancel and close this">&times;</button>
+                        <form>
+                            <div class="field">
+                                <label>
+                                    <span>Event: </span>
+                                    <input type="text" name="csename" value="">
+                                </label>
+                            </div>
+                            <div class="field">
+                                <label>
+                                    <span>Due Date:</span>
+                                    <input type="date" name="cseduedate" value="">
+                                </label>
+                            </div>
+                            <div class="field">
+                                <label>
+                                    <span>Short description:</span>
+                                    <textarea name="csedesc"></textarea>
+                                </label>
+                            </div>
+                            <div class="field">
+                                <label>
+                                    <input type="checkbox" name="csedone" value="">
+                                    <span>Done</span>
+                                </label>
+                            </div>
+                            <!-- TODO: Categories and colors -->
+                            <div class="field">
+                                <input type="submit" value="Add Event"><!-- TODO: Add a prompt saying "Ha! Ha! This doesn't work yet!" -->
+                                <input type="reset" value="Cancel">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- TODO: Add options to edit or remove events -->
+                    <div id="csevents">
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Chapter 16</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>                        
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Chapter 17</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Chapter 18</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Chapter 19</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                            
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>A4 Part 1: Connect DB to Spring App</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>A4 Part 2: Persistent Employers & Skills</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>A4 Part 3: Set up One-to-Many (1..*)</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>A4 Part 4: Set up Many-to-Many (*..*)</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>A5: Studio 19</b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed">
+                                <p>Hidden A5?</p>
+                            </div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b></b>
+                                    <span class="duedate">07/0/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>X-Day</b>
+                                    <span class="duedate">07/16/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>                        
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Graduation</b>
+                                    <span class="duedate">07/30/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (1/8)</b>
+                                    <span class="duedate">08/03/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (2/8)</b>
+                                    <span class="duedate">08/10/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (3/8)</b>
+                                    <span class="duedate">08/17/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (4/8)</b>
+                                    <span class="duedate">08/24/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (5/8)</b>
+                                    <span class="duedate">08/31/2020</span>
+                                </label>
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (6/8)</b>
+                                    <span class="duedate">09/07/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (7/8)</b>
+                                    <span class="duedate">09/14/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>
+                        <div class="csevent">
+                            <div class="cset">
+                                <label>
+                                    <input type="checkbox" name="csevent" value="">
+                                    <b>Liftoff (8/8)</b>
+                                    <span class="duedate">09/21/2020</span>
+                                </label>    
+                            </div>
+                            <div class="csed"></div>
+                        </div>    
+                    </div>
+                </div>
+                <div class="app" id="todolist">
+                    <!-- TODO: have the apptitle allow  for items to be moved around or hidden/expanded -->
+                    <div class="apptitle">Calendar Summary</div>
+                    <div id="viewaddcse">
+                        <button title="Add an event">+</button>
+                    </div>
+                    <!-- TODO: Put a form here -->
+                    <!-- TODO: Put all the other items in another div -->
+                    <div class="tditems">
+                        <div class="tditem">
+                            <div class="tdit"></div>
+                            <div class="tdid"></div>
+                        </div>
+                        <!-- add more eents here -->
+                    </div>
+                </div>
+                <div class="app" id="quicknotes">
+                    <!-- TODO: have the apptitle allow  for items to be moved around or hidden/expanded -->
+                    <div class="apptitle">Quick Notes</div>
+                    <div id="viewaddqn">
+                        <!-- TODO: SVG Icons -->
+                        <button title="Add a Note">+</button><!-- TODO: Plus on a note icon -->
+                        <button title="Add a Notebook">+</button><!-- TODO: Plus on a notebook icon -->
+                        <select name="notebook">
+                            <!-- list of notebooks -->
+                            <!-- Selecting a notebook changes the view to that notebook -->
+                            <!-- If an open note is open, ask to confirm save before changing -->
+                        </select>
+                        <button title="Manage notebooks">Manage NBs</button><!-- TODO: Pencel on Notebook icon -->
+                    </div>
+                    <div class="managenbs">
+                        <!-- List notebooks, add/edit/reorder/remove notebooks -->
+                        <div id="addnbs">
+                            <!-- Form to add/edit/remove notebook -->
+                        </div>
+                        <div id="listnbs"></div>
+                    </div>
+                    <div id="notebook">
+                        <div id="addnote">
+                            <!-- Form to add/edit/remove note -->
+                            <input type="hidden" name="noteid" value=""><!-- autmatically numbered note (statically numbered) -->
+                            <input type="hidden" name=="cdate" value=""><!-- date the note was created. Also used as default title, especially if duplicate named notes. -->
+                            <div class="field">
+                                <!-- Title. (no label needed) -->
+                                <input title="text" name="title" value="" placeholder="title">
+                                <!-- not required, but if blank, insert a timestamp. If duplicately named note, ask for a different name. If blank, use the cdate timestamp -->
+                            </div>
+                            <div class="field">
+                                <!-- Content. (no label) -->
+                                <!-- TODO: Markdown support -->
+                                <!-- TODO: LaTeX support -->
+                                <!-- TODO: PlantUML/Mermaid supprt -->
+                                <!-- TODO: Is there some way to make drawing? (Might be ideal for another field to save attachments. Probably beyond the scope of this project. -->
+                                <textarea name="Content" placeholder="content" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label>Notebook: </label>
+                                <select name="notebook">
+                                    <option value="nb0">Heap</option><!-- Let's make a notebook to toss anything here. This will be called "heap" -->
+                                    <!-- List of notebooks, sorted by alphabetically? -->
+                                    <!-- Items to add a new notebook -->
+                                </select>
+                            </div>
+                            <div class="field">
+                                <!-- TODO: How would this work? -->
+                                <label>
+                                    <!-- Hashtags would be created on the fly -->
+                                    <!-- If a unique hashtag is created, create a new hashtag -->
+                                    <!-- Hashtags could be renamed in a management interface -->
+                                    <!-- If no notes use a hashtag anymore, destroy that hashtag...better should it be saved? -->
+                                    <!-- TODO: In the hashtag manager, add descriptions? -->
+                                    <span>Hashtags:</span>
+                                    <textarea name="hashtags"></textarea>
+                                </label>
+                            </div>
+                            <div class="field">
+                                <!-- Various Buttons -->
+                                <!-- If changes were made before leaving this form, ask of you want to save them first -->
+                                <input type="submit" value="Add"><!-- Create mode (C) -->
+                                <input type="submit" value="Save"><!-- Update mode (U) -->
+                                <input type="button" value="Delete"><!-- Confirm first! (D) -->
+                                <input type="reset" value="Cancel"><!-- Cancel changes -->
+                            </div>
+                        </div>
+                        <div id="notes">
+                            <!-- List notes -->
+                            <div class="note">
+                                <div class="notet">HashMaps and ArrayLists</div>
+                                <div class="noted">
+                                    <pre>
+                                        Map&lt;K,V&gt; mapName = new HashMap&lt;&gt;();
+                                        List&lt;E&gt; listName = new ArrayList&lt;&gt;();
+                                    </pre>
+                                </div>
+                                <div class="notehts">
+                                    <span class="noteht">Java</span>
+                                    <span class="noteht">Code</span>
+                                    <span class="noteht">Data_Structures</span>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <div class="notet">SQL Notes</div>
+                                <div class="noted">
+                                    <ul>
+                                        <li>Database = Schema</li>
+                                    </ul>
+                                </div>
+                                <div class="notehts">
+                                    <span class="noteht">SQL</span>
+                                    <span class="noteht">MySQL</span>
+                                    <span class="noteht">Databases</span>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <div class="notet">Capstone Project Ideas</div>
+                                <div class="noted">
+                                    <ul>
+                                        <li>WebAmp as an Angular/Electron App</li>
+                                        <ul>
+                                            <li>Spotify Features</li>
+                                            <li>Milkdrop Features (I think there was a nother name for the web version.)</li>
+                                        </ul>
+                                        <li>Web-based calendar and note manager. (This thing?)</li>
+                                        <li>SQL Database that maps out all of the Java objects, with UML diagrams. A Code Atlas?</li>
+                                        <ul>
+                                            <li>Java</li>
+                                            <li>C++</li>
+                                            <li>Ruby</li>
+                                            <li>Python</li>
+                                            <li>JavaScript</li>
+                                            <li>TypeScript</li>
+                                            <li>Angular</li>
+                                            <li>NodeJS</li>
+                                            <li>MySQL</li>
+                                            <li>PHP</li>
+                                            <li>HTML</li>
+                                            <li>CSS</li>
+                                            <li>Thymeleaf</li>
+                                            <li>Hibernate</li>
+                                            <li>JUnit</li>
+                                            <li>Jasmine</li>
+                                            <li>UML</li>
+                                            <li>PlantUML</li>
+                                            <li>Mermaid</li>
+                                            <li>LaTeX</li>
+                                            <li>C#? (maybe...big maybe)</li>
+                                            <li>Go</li>
+                                            <li>Cisco or GNS3 (Hack-the-Planet telecom stuff)</li>
+                                            <li>Linux</li>
+                                            <li>Ham Radio/DX</li>
+                                            <li>Visual Studio Code</li>
+                                            <li>IntelliJ IDEA</li>
+                                            <li>Cool math project that make animations, spiralgraphs. (Might be Zim.js) Codepen stuff!</li>
+                                            <li>Raspberry Pi/Lapdock stuff. (Was hoping to do that this summer. Where's that stimulus money, Donnie!?)</li>
+                                            <li><abbr title="Internet of Things">IoT</abbr></li>
+                                            <li>AI/Machine Learning. (Sure that guy from Harvard is OK, but let's try to explain it like we had to learn Calculus III (or IV) on our own.</li>
+                                            <li>Haskell/Functional Programming/Lambda Calculus (All that anonymous function stuff)</li>
+                                        </ul>
+                                        <li>Functional/OOP Web library. (See if I can use that on codepen)</li>
+                                        <li>I need a team</li>
+                                        <li>Summary of a project. Elevator Pitch</li>
+                                        <li>I need to develop a plan for how to build this.</li>
+                                        <li>Diagrams that could be used to help explain the project</li>
+                                    </ul>
+                                </div>
+                                <div class="notehts">
+                                    <span class="noteht">LaunchCode</span>
+                                    <span class="noteht">Projects</span>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <div class="notet">Job plans</div>
+                                <div class="noted">
+                                    <ol>
+                                        <li>Finish LC101</li>
+                                        <li>Lifoff</li>
+                                        <li>Apprenticeship/Mentor/Job Coach</li>
+                                        <li>New Job (starting at $20/hr)</li>
+                                        <li>Better Job/Position (probably a year from now) $50K/yr</li>
+                                        <li>Awesome Job. 90K+</li>
+                                    </ol>
+                                    <b>Other things that might help</b>
+                                    <ol>
+                                        <li>Adulting stuff.</li>
+                                    </ol>
+                                </div>
+                                <div class="notehts">
+                                    <span class="noteht">Job_Stuff</span>
+                                    <span class="noteht">LaunchCode</span>
+                                    <div class="noteht">TBA</div>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <div class="notet">What to look for in an employer</div>
+                                <div class="noted">
+                                    <ul>
+                                        <li>Local/St. Louis Area (pref. St. Louis City/County north of Hwy 40)</li>
+                                        <li>Not a Dotard. Conservative, OK. Moderately liberal better. But Dotard/MAGAt = Consider hiring someone else. Never go full Dotard. (Tropic Thunder Meme would go here.) And no, I won't remove this item. Not after all the horrible stuff we've gone through. Nazi Bosses can f*** off!</li>
+                                        <li>Not a "Horrible Boss". (i.e. Someone who doesn't pay full wages or doesn't have the money to hire someone.)</li>
+                                        <li>Working ins a small group would be nice. (Having rarely done that, my social skills are likely a mess. This pandemic is not helping.)</li>
+                                        <li>First Shift is the only shift. 8-4/9-5. Why work crazy hours?!  Automate your work flow for off hours stuff.</li>
+                                        <li>Not a "DudeBro". Is this a tech company or a Knights of Columbus meeting? Find someone who hires women, <abbr title="people of color">p.o.c.</abbr>, LGBTQIA+, neurodiverse/Autism, disabled. TechBro Culture Must Die!</li>
+                                        <li>Remote work if out of town. Spend some time at the coworking space once pandemic is over.</li>
+                                        <li>Work attire: BizCasual.  Pay: Enough that I don't have to wear the same shirt twice in one week.</li>
+                                    </ul>
+                                </div>
+                                <div class="notehts">
+                                    <div class="noteht">Job_Stuff</div>
+                                    <div class="noteht">Job_Search</div>
+                                    <div class="noteht">TBA</div>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <div class="notet">Other microapps</div>
+                                <div class="noted">
+                                    <ul>
+                                        <li>Calculator (10-key, scientific, graphing, 3-D graphing)</li>
+                                        <li>Radio (Webamp, might be part of my project)</li>
+                                        <li>Spiralgraph maker</li>
+                                        <li>Desktop Games (Solitare, Minesweeper, Tetris, Breakout, Snake, Neko)</li>
+                                        <li>Picture Gallary (a la Window 7)</li>
+                                        <li>Analog Clock</li>
+                                        <li>Tiny Screensavers (Flying tosters. Flying stars. The old triangle thing?)</li>
+                                        <li>Fractal Explorer (color changes. Mandelbrot and Julia. I wish I could find that old mac app from 20 some years ago.</li>
+                                        <li>RSS News Reader</li>
+                                        <li>Virtual <a href="https://www.midifighter.com/">Midi Fighter</a> and other virtual instruments.</li>
+                                    </ul>
+                                </div>
+                                <div class="notehts">
+                                    <div class="noteht">Ideas</div>
+                                    <div class="noteht">Apps</div>
+                                    <div class="noteht">TBA</div>
+                                </div>
+                            </div>
+                            <div class="note">
+                                <div class="notet">Bookmarks</div>
+                                <div class="noted">
+                                    <ul>
+                                        <li>Windows 93</li>
+                                        <li>Codepen</li>
+                                        <li>LaunchCode</li>
+                                        <li>Webamp</li>
+                                        <li>Minesweeper</li>
+                                    </ul>
+                                </div>
+                                <div class="notehts">
+                                    <div class="noteht">Bookmarks</div>
+                                    <div class="noteht">TBA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--div id="clear"></div--><!-- restore flow -->
+        </main>
+        <footer></footer>
+    </body>
+</html>
