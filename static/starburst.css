@@ -1,0 +1,49 @@
+/* File: static/starburst.css
+ * Info: Styles for including a starburts as a CSS shape.
+ */
+
+/* TODO: Fix this style, I think it was meant to contain the shape */
+ header {
+    position: relative;
+}
+
+.special {
+    position: absolute;
+    left: 100px;
+    top: 75px;
+    color: #fff;
+    transform:  rotate(-15deg);
+}
+
+#burst-12 {
+    background: red;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    text-align: center;
+}
+#burst-12:before,
+#burst-12:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 80px;
+    background: red;
+}
+#burst-12:before {
+    transform: rotate(30deg);
+}
+#burst-12:after {
+    transform: rotate(60deg);
+}
+
+#burst-text {
+    z-index: 10;
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    font-size: 18pt;
+    font-weight: bold;
+}

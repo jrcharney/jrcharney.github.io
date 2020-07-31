@@ -3,55 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>JRCharney.github.io - The Start of Something New</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="static/styles.css">
+        <link rel="stylesheet" href="static/starburst.css">
         <style>
-    /* Add a starburt for this page */
-    /* I would put this in the CSS file, but this is a rare object */
-    header {
-        position: relative;
-    }
-
-    .special {
-        position: absolute;
-        left: 100px;
-        top: 75px;
-        color: #fff;
-        transform:  rotate(-15deg);
-    }
-
-    #burst-12 {
-      background: red;
-      width: 80px;
-      height: 80px;
-      position: relative;
-      text-align: center;
-    }
-    #burst-12:before,
-    #burst-12:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 80px;
-      width: 80px;
-      background: red;
-    }
-    #burst-12:before {
-      transform: rotate(30deg);
-    }
-    #burst-12:after {
-      transform: rotate(60deg);
-    }
-
-    #burst-text {
-        z-index: 10;
-        position: absolute;
-        top: 35%;
-        left: 15%;
-        font-size: 18pt;
-        font-weight: bold;
-    }
-  
+    
         </style>
         <!-- TODO: External modules -->
         <script>
@@ -73,22 +28,64 @@
         </header>
         <nav>
             <ul>
-                <li>Active Projects</li>
-                <li><a href="https://www.jrcharney.com/" title="This old house">JRCharney.com</a></li>
-                <li><a href="./LaunchCodeNotes">Launch Code Notes</a></li>
-                <li><a href="./html-me-something">HTML Me Something</a></li>
+                <li class="dropdown"><a href="#">Active Projects</a>
+                    <ul>
+                        <li><a href="https://www.jrcharney.com/" title="This old house">JRCharney.com</a></li>
+                        <li><a href="./hacktop" title="The official Hacktop page!">Hacktop</a></li>
+                        <li><a href="./LaunchCodeLiftoff" title="Active Program">Liftoff</a></li>
+                        <li><a href="https://github.com/jrcharney/" title="See what else I've been working on lately on my Github">GitHub</a></li>
+                    </ul>
+                </li>
+                <!-- TODO: Drop down menu! -->
+                <li class="dropdown"><a href="#">LaunchCode</a>
+                    <ul>
+                        <li><a href="./LaunchCodeLiftoff" title="Active Project">Liftoff</a></li>
+                        <li><a href="./LaunchCodeNotes" title="Stuff from Unit 1. Mostly abandoned">Notes</a></li>
+                        <li><a href="./html-me-something" title="One of my assignments from Unit 1.">HTML Me Something</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" title="Other places to find me online">Links</a>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/jasoncharney/" title="Boring Job Portfolio">LinkedIn</a></li>
+                        <li><a href="https://github.com/jrcharney/" title="Other Projects I've done not listed on this site.">GitHub</a></li>
+                        <li><a href="https://codepen.io/jrcharney/" title="See what I've been tinkering with with HTML/CSS/JS">CodePen</a></li>
+                        <li><a href="https://repl.it/@jrcharney" title="I rarely use this site because it is slow!">Repl.it</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <main>
-            <article>
-                <h2>Welcome to Something New</h2>
-                <p class="date">March 8, 2020</p>
-                <p>A few days ago I started <a href="./html-me-something">an assignment</a> for a <a href="https://www.launchcode.org/">LaunchCode</a> class which helped push me to finally build this website that is long overdue.</p>
-                <p>The structure of this site is a bit weird considering I plan on finally working on that <a href="./hacktop">Hacktop</a> page that had advertised on the back of my Hacktop the past few years. That page is part of this repository. However, my <a href="./LaunchCodeNotes">Launch Code Notes</a> and that one assignment are part of a different repository.  I'll need to see how I can merge at least one of those projects into this one later.</p>
-                <p>The thing about using GitHub Pages is that they run on Jekyll. So I'm not sure how I'm going to pencil in any of the Node.js I am learning if I can't use my website and if I probably can't use Github Pages either.</p>
-                <p>I could always try to use <a href="https://repl.it/@JRCharney">Repl.it</a>. ¯\_(ツ)_/¯</p>
-                <p>At any rate, thanks for visiting. Big things are coming here soon.</p>
-            </article>
+            <div id="blog">
+                <article>
+                    <h2>Liftoff!</h2>
+                    <p class="date">July 31, 2020</p>
+                    <p>This website continues to grow. The process of making it look more pleasing is one that does take time to construct.</p>
+                    <p>Slowly but surely this site becomes better than it was before.</p>
+                    <p>Starting August 3, I will take part in an <s>eight</s> <i title="Labor Day">nine</i> week course called <a href="./LaunchCodeLiftoff">Liftoff</a>. A page is being set up to track the progress.</p>
+                    <p>Efforts will also be made to move the grunt work of this site from my laptop to my <a href="./hacktop">hacktop</a>. <b>Yes, the Hacktop page now exists!</b> I've had one of those embosed labels made with a label maker that was on the back side of my hacktop for years. But thanks to some motivation by LaunchCode, it exists. I'll write more about my hacktop on that page.</p>
+                    <p>Python makes turing any computer into a makeshift server super easy.</p>
+                    <figure>
+                        <pre>python -m http.server 7800</pre>
+                        <figcaption>Run your site at <code>https://localhost:7800/</code>. Kill the process with Ctrl+C when you're done.</figcaption>
+                    </figure>
+                    <p>It seems like such a downgrade, but actually, using editors like <a hrf="https://www.vim.org/">Vim</a> in a <a href="https://github.com/tmux/tmux">terminal multiplexer</a> (<code>tmux</code>) over Secure Shell (SSH) to work on a Git repository is pretty much the same thing.  Alternatively, I could figure out how to use my hacktop's Raspberry Pi (or another Pi) as a <a href="https://magpi.raspberrypi.org/articles/samba-file-server">file server with Samba.</a>.</p>
+                    <p>There's a ton of stuff that I could do. I'd feel more confident about completing them if I had more resources to do them. Otherwise, it feels overwhelming sometimes.</p>
+                    <p>One of my goals with my Liftoff project is that I would like to work with a team. I understand that doing so can be complex and difficult at times. However, given that these are not normal times, and everyone is pretty much separated by distance thanks to the ongoing pandemic, it is necessary for team members to work in technological environments and work on their communication skills with their team members over the Internet.</p>
+                    <p>I would hope that working on my one of my Raspberry Pis this weekend will provide some idea and perspective on how to do this, more so since we will need to use Git to build this project. On the other hand, a private server which would provide the services we need to run some of the frameworks to get things done would also be of benefit.</p>
+                    <p>I'm starting to regret non completing my Cisco CCNA certification last year. At the same time, this would be an oppotunity to review some of that and think of how one would establish a server for things some webhosts won't provide unless their is a significant markup.</p>
+                    <p>Using the Pi might allow for a blueprint for the future.</p>
+                    <p>At any rate, look out for some new content on this site.</p>
+                </article>
+                <article>
+                    <h2>Welcome to Something New</h2>
+                    <p class="date">March 8, 2020</p>
+                    <p>A few days ago I started <a href="./html-me-something">an assignment</a> for a <a href="https://www.launchcode.org/">LaunchCode</a> class which helped push me to finally build this website that is long overdue.</p>
+                    <p>The structure of this site is a bit weird considering I plan on finally working on that <a href="./hacktop">Hacktop</a> page that had advertised on the back of my Hacktop the past few years. That page is part of this repository. However, my <a href="./LaunchCodeNotes">Launch Code Notes</a> and that one assignment are part of a different repository.  I'll need to see how I can merge at least one of those projects into this one later.</p>
+                    <p>The thing about using GitHub Pages is that they run on Jekyll. So I'm not sure how I'm going to pencil in any of the Node.js I am learning if I can't use my website and if I probably can't use Github Pages either.</p>
+                    <p>I could always try to use <a href="https://repl.it/@JRCharney">Repl.it</a>. ¯\_(ツ)_/¯</p>
+                    <p>At any rate, thanks for visiting. Big things are coming here soon.</p>
+                </article>
+            </div>
         </main>
         <footer>&copy; 2020 | A JRCharney Production</footer>
     </body>
