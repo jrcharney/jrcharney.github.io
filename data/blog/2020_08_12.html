@@ -1,0 +1,237 @@
+<h2>⚡ LightniNG! ⚡</h2>
+<p class="date">August 12, 2020</p>
+<blockquote>
+    <p><b>LONG ARTICLE!</b> I realized I put a lot of effort in to this post. I might move it to another page for consistency later.</p>
+</blockquote>
+<p>I'm trying to organize a new Angular App as part of my Liftoff project. I should be making a "Hello World" in angular that is supposed to demonstrate my skills. Right now, there is some unsettled nerves.</p>
+<p>The issue isn't developing the project, but WHERE I want to develop it. I want to build this app on a Raspberry Pi that is more than capable of running an Angular application. But in order to do that, I must remember how to set up Angular.</p>
+<p>This is this is a Manajro Linux set up, installing Node should be easy.</p>
+<figure>
+    <pre>$ sudo pacman -S nodejs npm</pre>
+    <figcaption>Start here.</figcaption>
+</figure>
+<p>In addition there are three other things worth installing: Yarn, TypeScript, and TS-Node.</p>
+<ul>
+    <li><a href="https://yarnpkg.com/">Yarn</a> is a dependency manager. From what I can tell, it's job is to prevent redundant installation of Node packages.</li>
+    <li><a href="https://www.typescriptlang.org/">TypeScript</a> is Microsoft's type-specific strict syntactic superset of JavaScript.</li>
+    <li><a href="https://github.com/TypeStrong/ts-node">TS-Node</a> is a TypeScript REPL. It allows for execution of Typescript apps through <code>node</code> and <code>tsc</code> as well as an interface to try out Typescript.</code></li>
+</ul>
+<p>On any other Linux distro, this software would be installed using <code>npm</code>.</p>
+<figure>
+    <pre>$ sudo npm -g install yarn typescript ts-node</pre>
+    <figcaption>Typically this is how it's done...</figcaption>
+</figure>
+<p>However, ArchLinux has better curation of their packages so the installation of these three packages is done this way.</p>
+<figure>
+    <pre>$ sudo pacman -S yarn typescript ts-code</pre>
+    <figcaption>...sometimes this is OK.</figcaption>
+</figure>
+<p>But installing Node packages globally (either with the <code>-g</code> option with <code>npm</code> or a package manager like <code>pacman</code> is rare.</p>
+<p>In fact, some global application DON'T have an Arch Linux software package. Angular happens to be one of them.</p>
+<p>So to kick off my project, I need to install Angular as a global application the <code>npm</code> way.</p>
+<figure>
+    <pre>$ sudo npm install -g @angular/cli</pre>
+    <figcaption>There's always at least one item that make things more frustrating.</figcaption>
+</figure>
+<p>With that done, we can get down to business!</p>
+<p>The other thing I need to think about is making this a peristent app. Arch Linux doesn't use MySQL. Some of the folks in the open-source community were not keen about Oracle buying Java or MySQL a few years ago. Instead of using Java, they use OpenJDK. Instead of using MySQL they use MariaDB.</p>
+<p><a href="https://mariadb.org/">MariaDB</a> is simply a fork of MySQL starting with MySQL version 5.7.  The semantic versioning of each relational database management software (RDBMS) is a little complicated. MariaDB is at version 10.4 at the time of this writing, which should be compatible with MySQL 5.7. MySQL is at version 8.0 but there is a catch!</p>
+<p>While it does look like MySQL is a "newer" version, it really isn't. If you are still using MySQL 5.7, you're still doing good. There is still support for that version of MySQL.</p>
+<p>The other thing is that MySQL is <i>slower</i> than MariaDB. MariaDB might not have all of the items that Oracle added to MySQL, but it's faster than MySQL. There are extension for JSON data. Oracle had to embed that stuff into MySQL. Then I there was the fact that when I first used the MySQL Shell feature that was added to MySQL, it was set to JavaScript mode. I already have a JavaScript REPL. It's called <code>node</code>! You know what would have been better, a Java mode since Java and MySQL are both Oracle products.</p>
+<p>So for this application, we're not just going to learn something new but also make a peristant application with Angular.</p>
+<p>"But Jason? Why not make it a MEAN stack and use MongoDB?"</p>
+<p>The 2014 me would have said "Yeah, let's use MongoDB because NoSQL sound pretty cool and a new technology.</p>
+<p>However things have changed. NoSQL isn't as cracked up as it seems to be.</p>
+<p>Technically, I <i>am</i> making a <abbr title="MongoDB Express Angular Node">MEAN</abbr>-stack application, only the <b>M</b> stands for MariaDB instead of MongoDB.</p>
+<p>What's more, there's an <code>npm</code> package for MariaDB. So here's the installation set up.</p>
+<figure>
+    <pre>$ sudo pacman -S mariadb mariadb-clients mariadb-libs</pre>
+    <figcaption>Installing the stuff we need for the database.</figcaption>
+</figure>
+<p>When I was learning how to develop apps with Angular, I was told not to enable routing. What they didn't mention was <i>why</i>.</p>
+<p>If you are making a very simple Single Page Application (SPA) with <b>one view</b>. What they didn't say was views (the combination of component and templates) are necessary for securing the application from unauthorized access. So for this application, we are going to use routing and impose guard to keep users safe.</p>
+<p>"OK, Jason, you've stored this on another computer for the benefit of showing off something? How are you going to access it?"</p>
+<p>I've though a lot about this. Since my goal is to develop a secure application, I should find some way to securely share access from the Linux machine that is hosting the files and the repository to the Windows client that is accessing and writing them. This is where <a href="https://www.samba.org/">Samba</a> comes in.</p>
+<p>You may have seen the phrase "Samba shares" kicked around some office-types over the last few decades. When they talk about "Samba share" what are they talking about?</p>
+<p>A <i>samba share</i> is just some techincal jargon stating how one computer has access to another computer. Think of it as how you can use SSH to access a computer from a text terminal or whenever we push stuff using Git.</p>
+<p>Samba, according to its website, is a standard Windows interoperablity suite of programs for Linux and Unix. Basically, it lets you access files on either operating system as if they were part of the computer, sort of how One Drive or Dropbox does, but on a more closed network like an office or school does.</p>
+<p>I don't feel like installing another database software on my Windows laptop, and to be honest, I should really think about moving some of my software development stuff off this machine and have it be accessible either by SSH or Samba. There are apps that allow you to access file systems over SSH as if they were on the same network (i.e. WinSCP), but this requires there to be a connection.</p>
+<p>There's also another distributed file system protocol called NFS which prides itself on speed but is unecrypted. In the interest of making a secure application, we should use a secure protocol. Samba provides that.</p>
+<p>Fortuitously, <code>samba</code> is already installed as part of Manjaro Linux. It likely was installed to allow for access to network printers. So that saves me from needing to run <code>sudo pacman -S samba</code>. Worth noting that if I had used Arch Linux, the configuration file (<code>/etc/samba/smb.conf</code>) might not have been created which according to the <a href="https://wiki.archlinux.org/index.php/samba#Server">Arch Linux Wiki</a> is necessary.</p>
+<p>Before I get into explaining how I plan on access the local server from my computer, I want to go over one other piece of software called <a href="https://avahi.org/">Avahi</a>. Avahi is a free <a href="http://www.zeroconf.org/">Zero-configureation networking</a> (zeroconf) implementation that allows me to access devices by name rather than IP address. It isncludes a system for multicast DNS service discovery and allows programs to publish and discover services and hosts running on a local network with not specific configuration. This is ideal for the home office, but if you learn anything about IP addresses in some networking course like Cisco, you'll find that using this publicly might not be a good idea. Still, it's nice to have because then I can call up a device by a hostname rather than an IP address.</p>
+<p>We'll refer to the device that is running our application as Blake (of which the host name will be <code>blake</code>). Thus on the home network, if I run my angular app at <code>http://localhost:4200/</code> the application should be accessible on other machines at <code>http://blake:4200/</code> or <code>http://blake.local:4200/</code>.</p>
+<p>There was also something about how this one software called <a href="https://en.wikipedia.org/wiki/Bonjour_(software)">Bonjour</a> needed to be installed if you were trying to use a zeroconf system on Windows. But now that I think about it, I think that's optional and possibly for accessing the Windows computer the same way.</p>
+<p>At any rate, back to our Samba setup.</p>
+<p>According the the <a href="https://wiki.archlinux.org/index.php/Avahi#Samba">Arch Linux Wiki</a>, if there is a zeroconf (Avahi/Bonjour) daemon running on both the server and the client, the file manager on the client should automatically find the server.</p>
+<p>So now we need to set up our username and password for Samba. I would probably suggest using the same one a login, but in high security situation you'll want to use something different.</p>
+<figure>
+    <pre>$ sudo smbpasswd -a jrcharney
+[sudo] password for jrcharney:
+New SMB password:
+Retype new SMB password:
+Added user jrcharney.</pre>
+    <figcaption>Hmm...that was easy.</figcaption>
+</figure>
+<p>The next part is we want to say what it is we want to share. As tempting as it is to tell it to share your Linux home directory, that might not be such a good idea.</p>
+<p>Interestingly enough I have decided to limit my share to one of two folders. <code>~/Projects</code> or <code>~/Public</code>. Normally, I just stick my project that I am working on the computer that I am using in <code>~/Projects</code>, but I'm using another computer to acces this project. So I guess the solution should me moving my directory that I am using to hold my project into the <code>~/Public</code>, and have Samba access to that folder.</p>
+<p>Now comes a messy part. On the Linux machine, make a backup of the Samba configuration file in your home directory.</p>
+<figure>
+    <pre>$ sudo cp /etc/samba/smb.conf ~</pre>
+    <figcaption>Safety first!</figcaption>
+</figure>
+<p>As root, you will need a use a text editor to edit the original file. There are two parts of the file that need to be edited. The first part is the <code>[global]</code> section, where modes for creating files and directories need to be modified.</p>
+<figure>
+    <pre>[global]
+workgroup = WORKGROUP
+dns proxy = no
+log file = /var/log/samba/%m.log
+max log size = 1000
+client min protocol = SMB2
+server role = standalone server
+passdb backend = tdbsam
+obey pam restrictions = yes
+unix password sync = yes
+passwd program = /usr/bin/passwd %u
+passwd chat = *New*UNIX*password* %n\n *ReType*new*UNIX*password* %n\n *passwd:*all*authentication*tokens*updated*successfully*
+pam password change = yes
+map to guest = Bad Password
+usershare allow guests = yes
+name resolve order = lmhosts bcast host wins
+security = user
+guest account = nobody
+usershare path = /var/lib/samba/usershare
+usershare max shares = 100
+usershare owner only = yes
+create mask = 0644
+directory mask = 0755
+force create mode = 0644
+force directory mode = 0755</pre>
+    <figcaption>Basically the last four lines in this section.</figcaption>
+</figure>
+<p>The other part is a new section that needs to be added at the end of the file to allow access to the folder and to limit access only to yourself.</p>
+<figure>
+    <pre>[liftoff]
+comment = LaunchCode Liftoff Projects
+path = /home/jrcharney/Public/liftoff
+browseable = yes
+writeable = yes
+printable = no
+valid users = jrcharney
+force user = jrcharney
+force group = jrcharney
+create mask = 0644
+directory mask = 0755
+guest ok = no
+guest only = no</pre>
+    <figcaption>A new section!</figcaption>
+</figure>
+<p>Once saved, we need to check for typos.</p>
+<figure>
+    <pre>$ testparm /etc/samba/smb.conf
+Load smb config files from /etc/samba/smb.conf
+Loaded services file OK.
+Server role: ROLE_STANDALONE
+
+Press enter to see a dump of your service definitions
+...</pre>
+    <figcaption>That is <code>testparm</code> with one <i>a</i>!</figcaption>
+</figure>
+<p>Almost there. We just need to reset the service.</p>
+<figure>
+    <pre>$ sudo systemctl reload smb</pre>
+    <figcaption>Here goes nothing.</figcaption>
+</figure>
+<p>On you Windows machine, you <b>DO NOT</b> need to turn on Network Sharing!</p>
+<!-- Let's make a CSS gallery! -->
+<blockquote>
+    <p><b>This next section is a slide deck!</b> Hover over it to see arrow controllers!</p>
+</blockquote>
+<div class="deck" id="samba_slides">
+    <div class="slides">
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step01.png" alt="step01">
+                <figcaption>
+                    <p>Right click on <code>This PC</code> and look for the <code>Add a network location</code>. Click on that.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step02.png" alt="step02">
+                <figcaption>
+                    <p>You'll be taken to the Add Network Location Wizard. Click <code>Next</code>.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step03.png" alt="step03">
+                <figcaption>
+                    <p>You will be asked where you want to create this network location.</p>
+                    <p>Since there is only one option, it should be pretty obvious whick item it click.</p>
+                    <p>Click <code>Choose a custom network location</code> then click <code>Next</code>.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step04.png" alt="step04">
+                <figcaption>
+                    <p>You will then be asked to specify the location of Samba server.</p>
+                    <p>Samba addresses are in the format <code>\\SERVERNAME\DIRECTORY</code>.</p>
+                    <p>Since we stated that <code>blake</code> was the server name, and that the only accessible directory on Blake would be the <code>liftoff</code> directory, the address will be <code>\\blake\liftoff</code>.</p>
+                    <p>Click <code>Next</code>.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step05.png" alt="step05">
+                <figcaption>
+                    <p>To make our server easy to find on the computer, we need to set a name for the network. As you can see in the illustration <code>liftoff (blake (Samba 4.12.3))</code> was automatically generated as a name. I changed it to <code>Blake - Liftoff</code>.</p>
+                    <p>Change yours to how you feel like, then click <code>Next</code> to submit it.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step06.png" alt="step06">
+                <figcaption>
+                    <p>Almost ready! Click <code>Finish</code> to complete the creation process.</p>
+                    <p>You may want to leave that checkbox checked.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step07.png" alt="step07">
+                <figcaption>
+                    <p>One final step in this process is adding the creditials to access the server.</p>
+                    <p>Enter your username and password and check the <code>Remember my credentials</code> box.  Doing this will have Windows remember this server in the future.</p>
+                    <p>Click <code>OK</code> to complete the process.</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="slide">
+            <figure>
+                <img src="images/samba_screenshots/step08.png" alt="step08">
+                <figcaption>
+                    <p>You should now be able to access your Samba share!</p>
+                    <p>Keep in mind, this is not access to the entire server, but part of it.</p>
+                    <p>If you would like to change that, modify your Samba configuration on the server.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <!-- These two buttons are last so that they can appear on top -->
+    <button class="slide_ctl prev_ctl" title="Previous Slide">&#10094;</button>
+    <button class="slide_ctl next_ctl" title="Next Slide">&#10095;</button>
+    <!-- TODO: view this as a list in print view. -->
+</div>
+<p>So was it worth all that trouble just to get this project set up. Yes.</p>
+<figure>
+    <img src="images/samba_screenshots/vssamba.png" alt="vssamba">
+    <figcaption>It was worth it!</figcaption>
+</figure>
+<p>This article got pretty long. I might break it up into smaller parts. I still have to get the database set up and wireframe my project views. All sorts of stuff.</p>

@@ -2,6 +2,7 @@
  * These styles will be here quite a while serving smiles from aisle to aisle.
 */
 /* CSS variables make changing the color scheme on this site super easy. */
+/* TODO: Can root palets be stored elswhere and imported to other files? */
 :root {
     --bg: #333;
     --fg: #fff;
@@ -174,39 +175,6 @@ footer {
     height: 50px;
     font-size: 9pt;
     vertical-align: bottom;
-}
-
-#blog > article {
-    padding: 3px;
-}
-
-#blog > article > h2 {
-    text-shadow: var(--shadow);
-}
-
-figure {
-    border-radius: 5px;
-    box-shadow: var(--shadow);
-    padding: 3px;
-}
-
-figure > pre {
-    background-color: #000;
-    color: #fff;
-    font-family: monospace;
-    border: 1px inset #fff;
-    padding: 1px;
-    font-size: 12pt;
-    margin-left: 3px;
-    margin-right: 3px;
-}
-
-figure > figcaption {
-    font-size: 9pt;
-    text-align: center;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    color: #eee;
 }
 
 code {

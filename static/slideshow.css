@@ -1,0 +1,106 @@
+/* File: slideshow.css
+ * Info: These styles are used in correspodence with slideshow.js
+ */
+
+ :root {
+    --bg: #333;
+    --fg: #fff;
+    --accentbg: #33f;
+    --accentfg: #fff;
+    --menubg: #000;
+    --menufg: #0cc;
+    --shadow: 2px 2px 5px #111;
+    --hlink: #0ff;
+    --link: #0cc;
+    --vlink: #0aa;
+    --alink: #0bb;
+}
+
+/* The deck contains the .slides which contain each .slide and the control buttons. */
+.deck {
+    display: block;
+    overflow: auto;
+    position: relative;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.deck > button.slide_ctl {
+    opacity: 0;
+    transition: opacity ease 1s;
+}
+
+.deck:hover > button.slide_ctl {
+    opacity: 1;
+}
+
+.slides {
+    /* TODO: would it be wise to use a flexbox? */
+    display: flex;
+    flex: 1;
+    overflow: auto;
+    justify-content: center;
+}
+.slide {
+    display: flex;
+    min-height: min-content;
+    width: 100%;
+}
+
+.slide > figure {
+    display: flex;
+    align-items: center;
+}
+.slide > figure > img {
+    display: block;
+    object-fit: contain;
+    max-width: 600px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+}
+.slide > figure > figcaption {
+    display: block;
+    padding: 3px;
+    min-width: 300px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+}
+
+.slide > figure > figcaption > p {
+    font-size: 12pt;
+    text-align: left;
+}
+
+button.slide_ctl {
+    position: absolute;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border-width: 3px;
+    border-style: outset;
+    border-color: #222;
+    box-shadow: var(--shadow);
+    top: 50%;
+    outline: none;  /* get rid of that border that shows up on our buttons */
+    cursor: pointer;
+    /* add box shadow and border radius later */
+    transition: border-color ease 1s;
+}
+/* TODO: disable button on first or last slide */
+
+button.slide_ctl:hover {
+    border-color: #00f;
+}
+
+button.prev_ctl{
+    left: 0;
+}
+
+button.next_ctl{
+    right: 0;
+}
