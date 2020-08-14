@@ -1,0 +1,78 @@
+[
+    {
+        "text" : "Active Projects",
+        "items" : [
+            {
+                "text" : "JRCharney",
+                "url" : "https://www.jrcharney.com/",
+                "title" : "This Old House!"
+            },
+            {
+                "text" : "Hacktop",
+                "url" : "./hacktop",
+                "title" : "The official Hacktop page!"
+            },
+            {
+                "text" : "Liftoff",
+                "url" : "./LaunchCodeLiftoff",
+                "title" : "Active Project"
+            },
+            {
+                "text" : "⚡LightniNG⚡",
+                "url" : "./lightniNG",
+                "title" : "Angular based web application for weather notifications"
+            },
+            {
+                "text" : "Github",
+                "url" : "https://github.com/jrcharney/",
+                "title" : "See what else I've been working on lately on my Github"
+            }
+        ]
+    },
+    {
+        "text" : "LaunchCode",
+        "items" : [
+            {
+                "text" : "Liftoff",
+                "url" : "./LaunchCodeLiftoff",
+                "title" : "Active Project"
+            },
+            {
+                "text" : "HTML Me Something",
+                "url" : "./html-me-something",
+                "title" : "The assignment from Unit 1 that helped launch this site!"
+            },
+            {
+                "text" : "Unit 1 Notes (Abandoned)",
+                "url" : "./LaunchCodeNotes",
+                "title" : "Stuff from Unit 1. Mostly abandoned"
+            }
+        ]
+    },
+    {
+        "text" : "Links",
+        "title" : "Other places to find me online",
+        "items" : [
+            {
+                "text" : "LinkedIn",
+                "url" : "https://www.linkedin.com/in/jasoncharney/",
+                "title" : "Boring Job Portfolio"
+            },
+            {
+                "text" : "Github",
+                "url" : "https://github.com/jrcharney/",
+                "title" : "Other Projects I've done not listed on this site."
+            },
+            {
+                "text" : "Codepen",
+                "url" : "https://codepen.io/jrcharney/",
+                "title" : "See what I've been tinkering with with HTML/CSS/JS"
+            },
+            {
+                "text" : "Repl.it",
+                "url" : "https://repl.it/@jrcharney",
+                "title" : "I rarely use this site because it is slow!"
+            }
+        ]
+    }
+]

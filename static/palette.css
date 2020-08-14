@@ -1,0 +1,16 @@
+/* File: palette.css
+ * Info: Use CSS variables across other css files using import.
+ */
+ :root {
+    --bg: #333;
+    --fg: #fff;
+    --accentbg: #33f;
+    --accentfg: #fff;
+    --menubg: #000;
+    --menufg: #0cc;
+    --shadow: 2px 2px 5px #111;
+    --hlink: #0ff;
+    --link: #0cc;
+    --vlink: #0aa;
+    --alink: #0bb;
+}

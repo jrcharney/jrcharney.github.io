@@ -3,19 +3,8 @@
 */
 /* CSS variables make changing the color scheme on this site super easy. */
 /* TODO: Can root palets be stored elswhere and imported to other files? */
-:root {
-    --bg: #333;
-    --fg: #fff;
-    --accentbg: #33f;
-    --accentfg: #fff;
-    --menubg: #000;
-    --menufg: #0cc;
-    --shadow: 2px 2px 5px #111;
-    --hlink: #0ff;
-    --link: #0cc;
-    --vlink: #0aa;
-    --alink: #0bb;
-}
+@import url("palette.css");
+
 
 html {
     height: 100%;
@@ -77,88 +66,12 @@ header > hgroup > h2 {
     /* line-height: 14pt; */
 }
 
+/* Note: All other nav style are in navbar.css */
 nav {
     background-color: var(--menubg);
     margin-top: 0;
     margin-bottom: 0;
     /* height: 30px; */
-    text-align: center;
-}
-
-nav > ul {
-    list-style-type: none;
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: none;
-    justify-content: space-evenly;
-}
-
-nav > ul > li {
-    display: block;
-    margin: 0;
-    min-width: 25%;
-    transition: 0.5s;
-}
-
-nav > ul > li:hover {
-    cursor: pointer;
-}
-
-
-/* Dropdown */
-nav > ul > li.dropdown > a {
-    font-weight: bold;
-}
-
-nav > ul > li.dropdown:hover {
-    background-color: var(--accentbg);
-    color: var(--accentfg);
-}
-
-nav > ul > li.dropdown:hover > a {
-    color: var(--accentfg);
-}
-
-nav > ul > li.dropdown > ul {
-
-    list-style-type: none;
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    min-width: 20%;
-    background-color: var(--menubg);
-    color: var(--menufg);
-
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    transition: all 0.5s ease;
-    margin-top: 1rem;
-    left 0;
-    display: none;
-}
-
-nav > ul > li.dropdown:hover > ul,
-nav > ul > li.dropdown > ul:hover {
-    visibility: visible;
-    opacity: 1;
-    display: block;
-    margin-top: 0;
-    padding: 3px;
-    /* margin-left: 0; */
-    box-shadow: var(--shadow);
-}
-
-nav > ul > li.dropdown > ul > li {
-    clear: both;
-    width: 100%;
 }
 
 /* Main should stretch down to the bottom */

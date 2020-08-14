@@ -19,7 +19,7 @@ class Blog {
         this.blog.append(article);
     }
 
-    addMistake(err){
+    mistake(err){
         let oops = document.createElement("div");
         oops.classList.add("oops");
         let oops_title = document.createElement("div");
@@ -32,7 +32,6 @@ class Blog {
         this.blog.append(oops);
         console.error(err);
     }
-
 
     // To make sure our posts are posted in the order requested, init() is an async function
     // TODO: It still post things out of order!
@@ -53,6 +52,6 @@ class Blog {
         articles.forEach(article => {this.addArticle(article)});
     }
     async init(){
-        this.promisify().catch(err => {this.addMistake(err)});
+        this.promisify().catch(err => {this.mistake(err)});
     }
 }

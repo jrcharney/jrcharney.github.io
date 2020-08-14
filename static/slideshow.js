@@ -4,6 +4,7 @@
  */
 // I intially though I should make the methods static, but then
 // I realized I need to make an instance for a slideshow.
+// TODO: Use JSONP data
 class SlideShow {
     constructor(name){
         // TODO: make sure the deck has a class called "slides"

@@ -3,19 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>JRCharney.github.io - The Start of Something New</title>
+        <!-- TODO: I wonder if I can load these dynamically with fetch? -->
         <link rel="stylesheet" href="static/styles.css">
         <link rel="stylesheet" href="static/starburst.css">
+        <link rel="stylesheet" href="static/navbar.css">
         <link rel="stylesheet" href="static/blog.css">
         <link rel="stylesheet" href="static/slideshow.css">
         <style>
     
         </style>
         <!-- TODO: External modules -->
+        <script src="static/navbar.js"></script>
         <script src="static/blog.js"></script>
         <script src="static/slideshow.js"></script>
         <script>
             window.addEventListener('load',() => {
                 // Run these once the web page has fully loaded.
+                if(document.querySelector("#navbar") !== null){
+                    let navbar = new NavBar("#navbar","data/static/navbar.json");
+                    navbar.init();
+                }
                 if(document.querySelector("#blog") !== null){
                     let posts = [
                         '2020_03_08',
@@ -40,37 +47,8 @@
                 <h2>The Start of Something New</h2>
             </hgroup>
         </header>
-        <nav>
-            <!-- TODO: Eventually store dropdown menu un the data directory -->
-            <ul>
-                <li class="dropdown"><a href="#">Active Projects</a>
-                    <ul>
-                        <li><a href="https://www.jrcharney.com/" title="This old house">JRCharney.com</a></li>
-                        <li><a href="./hacktop" title="The official Hacktop page!">Hacktop</a></li>
-                        <li><a href="./LaunchCodeLiftoff" title="Active Program">Liftoff</a></li>
-                        <li><a href="./lightniNG" title="Angular based web application for weather notifications">⚡LightniNG⚡</a></li>
-                        <li><a href="https://github.com/jrcharney/" title="See what else I've been working on lately on my Github">GitHub</a></li>
-                    </ul>
-                </li>
-                <!-- TODO: Drop down menu! -->
-                <li class="dropdown"><a href="#">LaunchCode</a>
-                    <ul>
-                        <li><a href="./LaunchCodeLiftoff" title="Active Project">Liftoff</a></li>
-                        <li><a href="./LaunchCodeNotes" title="Stuff from Unit 1. Mostly abandoned">Notes</a></li>
-                        <li><a href="./html-me-something" title="One of my assignments from Unit 1.">HTML Me Something</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" title="Other places to find me online">Links</a>
-                    <ul>
-                        <li><a href="https://www.linkedin.com/in/jasoncharney/" title="Boring Job Portfolio">LinkedIn</a></li>
-                        <li><a href="https://github.com/jrcharney/" title="Other Projects I've done not listed on this site.">GitHub</a></li>
-                        <li><a href="https://codepen.io/jrcharney/" title="See what I've been tinkering with with HTML/CSS/JS">CodePen</a></li>
-                        <li><a href="https://repl.it/@jrcharney" title="I rarely use this site because it is slow!">Repl.it</a></li>
-                    </ul>
-                </li>
-                <!-- TODO: dropdown list of all blog posts -->
-            </ul>
-        </nav>
+        <!-- TODO: dropdown list of all blog posts -->
+        <nav id="navbar"></nav>
         <main>
             <div id="blog"></div>
         </main>

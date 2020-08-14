@@ -1,20 +1,7 @@
 /* File: blog.css
  * Info: Styles for the blog application
  */
-
- :root {
-    --bg: #333;
-    --fg: #fff;
-    --accentbg: #33f;
-    --accentfg: #fff;
-    --menubg: #000;
-    --menufg: #0cc;
-    --shadow: 2px 2px 5px #111;
-    --hlink: #0ff;
-    --link: #0cc;
-    --vlink: #0aa;
-    --alink: #0bb;
-}
+@import url("palette.css");
 
 #blog > article {
     padding: 3px;
