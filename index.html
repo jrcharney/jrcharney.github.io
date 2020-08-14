@@ -16,13 +16,12 @@
         <script>
             window.addEventListener('load',() => {
                 // Run these once the web page has fully loaded.
-                //import {SlideShow} from "static/slideshow.js";    Can't do this. It's a syntax error
-
                 if(document.querySelector("#blog") !== null){
                     let posts = [
-                        '2020_08_12',
+                        '2020_03_08',
                         '2020_07_31',
-                        '2020_03_08'
+                        '2020_08_12',
+                        '2020_08_14'
                     ];
                     let blog = new Blog("#blog","data/blog",posts);
                     blog.init();

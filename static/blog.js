@@ -13,19 +13,13 @@ class Blog {
     // TODO: Fetch the beginning of long posts
     // TODO: Extract titles and timestamps
 
-    // To make sure our posts are posted in the order requested, init() is an async function
-    // TODO: It still post things out of order!
-    async fetchArticle(url){
-        let res = await fetch(url);
-        let content;
-        if(!res.ok){
-            throw new Error(`HTTP error! status: ${res.status}`);
-        } else {
-            content = await res.text();
-        }
-        return content;
+    addArticle(data){
+        let article = document.createElement("article");
+        article.innerHTML = data;
+        this.blog.append(article);
     }
-    mistake(err){
+
+    addMistake(err){
         let oops = document.createElement("div");
         oops.classList.add("oops");
         let oops_title = document.createElement("div");
@@ -33,27 +27,32 @@ class Blog {
         oops_title.innerHTML = "<h2>An error has occurred.</h2>";
         oops_body.innerHTML = err;
         oops.append(oops_title,oops_body);
-        return oops;
+        //return oops;
+        //let oops = this.mistake(err);
+        this.blog.append(oops);
+        console.error(err);
+    }
+
+
+    // To make sure our posts are posted in the order requested, init() is an async function
+    // TODO: It still post things out of order!
+    async fetchArticle(url){
+        let res = await fetch(url);
+        if(!res.ok){
+            throw new Error(`HTTP error! status: ${res.status}`);
+        } else {
+            return await res.text();    // returns content
+        }
+    }
+    // This is good, but what if I just wanted to do this for ONE article?
+    async promisify(){
+        let promises = Array.from(this.posts).reverse().map(post => {
+            return this.fetchArticle(`${this.filepath}/${post}.html`)
+        });
+        let articles = await Promise.all(promises);
+        articles.forEach(article => {this.addArticle(article)});
     }
     async init(){
-        // The sort and reverse are probably not necessary, but this will enforce the order of the pages we requested.
-        Array.from(this.posts).sort().reverse()
-        .forEach(post => {
-            // TODO: I might need to add some features to this fetch
-            //await fetch(`${this.filepath}/${post}.html`)
-            this.fetchArticle(`${this.filepath}/${post}.html`)
-            //.then(res => {return res.text()})         // We don't need this. It's done in fetchArticle.
-            .then(data => {
-                //document.querySelector("#blog").innerHTML = data;
-                let article = document.createElement("article");
-                article.innerHTML = data;
-                this.blog.append(article);
-            })
-            .catch(err => {
-                let oops = this.mistake(err);
-                this.blog.append(oops);
-                console.error(err);
-            });
-        });
+        this.promisify().catch(err => {this.addMistake(err)});
     }
 }
