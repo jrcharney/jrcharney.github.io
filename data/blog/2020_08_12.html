@@ -229,6 +229,15 @@ Press enter to see a dump of your service definitions
     <button class="slide_ctl next_ctl" title="Next Slide">&#10095;</button>
     <!-- TODO: view this as a list in print view. -->
 </div>
+<script type="text/javascript">
+window.addEventListener('load',() => {
+    // Run this only if it exists
+    if(document.querySelector("#samba_slides") !== null){
+        let samba_slides = new SlideShow("#samba_slides");
+        samba_slides.init();
+    }
+}
+</script>
 <p>So was it worth all that trouble just to get this project set up. Yes.</p>
 <figure>
     <img src="images/samba_screenshots/vssamba.png" alt="vssamba">
