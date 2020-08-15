@@ -1,0 +1,30 @@
+<h2>Persistence of Database</h2>
+<p class="date">August 15, 2020</p>
+<p>As part of <a href="./LightniNG">LightniNG</a>, I wanted my application to be deployed online. Initially, my thought was to use MariaDB as that is what is available on Manjaro Linux ARM. However there appears to be a conflict between LaunchCode seeking to see an application with a persistent backend and Github's lack of database.</p>
+<p>I've thought over a few options on how to fix this problem:</p>
+<h3>Option 1: Use a Github Action to do that.</h3>
+<p>There's so much about pricing a service 0.008 cents per minute that grows in to a $357/month bill that scares me. Heck, I'm not making any money off of this. So I think Github Actions is off the table for now. Find me a Venture Capitalist Sugar Daddy/Mama first to fund that part of the project.</p>
+<h3>Option 2: Use a NoSQL system like Redis.</h3>
+<p>I'm still in the user-story/wireframing phase of this project, so there is still time to think about alternatives. Redis was an option considering there is an <code>npm</code> package. Besides, I think I own a sales rep that showed up at T-REX one time for letting me swipe some Redis swag during a power outage.</p>
+<h3>Option 3: See if I can use MySQL on my Dreamhost server.</h3>
+<p>The old website is still kicking, and will eventually adopt a lot of the features in this blog. The Fetch API has provided a workaround for a problem the old site has: a lack of Node.js.</p>
+<p>I Addressed this issue on my website a while ago and why Dreamhost, which is still letting me use PHP but won't let my use Node.js without paying for an expensive add on.</p>
+<h3>Option 4: Move everything to another project host</h3>
+<p>There are a few options with this one, but like with option 1, they aren't cheap.</p>
+<h4><s>Firebase</s></h4>
+<p>Firebase is too damn expensive! ($10K/year? YIKES!)</p>
+<h4>Heroku</h4>
+<p>Heroku seemed like an option, until I saw Salesforce now owns them.</p>
+<p>I'm on the fence as to whether or not I want to give my money to a mult-billion dollar tech company who has made living in San Francisco a case study in gentrification, more so since 30+ years after the Loma Prieta Earthquake there's a ton of structures that haven't been retrofitted because of being granfathered into California/SF building codes. It's like that scene in the <i>Charlie and the Chocolate Factory</i> remake where Willy told that Indian prince building a palace out of chocolate was a bad idea, but he wanted it anyway, and then one hot summer day it melted.</p>
+<p>I know it seems a bit naive to make this a socially conscious decision, but consider the fact that Salesforce still doesn't have a Trailhead training app for Android for people not foolish enough to spend $2000 on a phone with specifications most Android phones had five years ago. Are you paying for something to be "trendy" or functional?</p>
+<p>Salesforce has enough money.</p>
+<h4>AWS</h4>
+<p>Think Heroku/Salesforce but with a ton of stuff I don't understand, don't feel like configuring, and don't feel like paying for. Hard pass.</p>
+<h4>Gitlab</h4>
+<p>Gitlab is a popular Github alternative. A lot of folks moved their projects here after Microsoft picked up Github a few years ago.</p>
+<h3>The verdict: Option 2</h3>
+<p>It could be possible to integrate Redis into the application. But NoSQL got its name from being a non-relational database management system (non-RDBMS). On the other hand, Redis does have NPM support that could integrate with Angular.</p>
+<p>Also, as much as I would have loved to have given Gitlab's <abbr title="Continuous Integration">CI</abbr>/<abbr title="Continuous Delivery">CD</abbr> features a try, this is a solo project. The pandemic has put a cramp in any team development plans that I was looking forward to.</p>
+<p>Hopefully later today I can update this post with some of the wireframes I've been working on. PlantUML offers a wireframing feature called <a href="https://plantuml.com/salt">Salt</a> that allows for creating wireframes a lot like I would with UML diagrams.</p>
+<p>I'll be sure to share those here and on my LightniNG repo and Liftoff Assigments repo.</p>
+<p>I'm also thinking of moving more projects from my Windows machine to my Raspberry Pi via Samba share. It does have its benefits. Most notably, Linux.</p>
