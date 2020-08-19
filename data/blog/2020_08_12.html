@@ -147,6 +147,76 @@ Press enter to see a dump of your service definitions
     <p><b>This next section is a slide deck!</b> Hover over it to see arrow controllers!</p>
 </blockquote>
 <!-- TODO: Replace the data in this section with a json file and a program to run. -->
+<div class="deck" id="samba_slides"></div>
+<script type="text/javascript">
+//const slide_path="images/samba_screenshots/"
+let samba_slides = [
+    {
+        img: "images/samba_screenshots/step01.png",
+        cap: [ "Right click on <code>This PC</code> and look for the <code>Add a network location</code>. Click on that." ]
+    },
+    {
+        img: "images/samba_screenshots/step02.png",
+        cap: [ "You'll be taken to the Add Network Location Wizard. Click <code>Next</code>." ]
+    },
+    {
+        img: "images/samba_screenshots/step03.png",
+        cap: [
+            "You will be asked where you want to create this network location.",
+            "Since there is only one option, it should be pretty obvious which item it click.",
+            "Click <code>Choose a custom network location</code> then click <code>Next</code>."
+        ]
+    },
+    {
+        img: "images/samba_screenshots/step04.png",
+        cap: [
+            "You will then be asked to specify the location of Samba server.",
+            "Samba addresses are in the format <code>\\SERVERNAME\DIRECTORY</code>.",
+            "Since we stated that <code>blake</code> was the server name, and that the only accessible directory on Blake would be the <code>liftoff</code> directory, the address will be <code>\\blake\liftoff</code>.",
+            "Click <code>Next</code>."
+        ]
+    },
+    {
+        img: "images/samba_screenshots/step05.png",
+        cap: [ 
+            "To make our server easy to find on the computer, we need to set a name for the network. As you can see in the illustration <code>liftoff (blake (Samba 4.12.3))</code> was automatically generated as a name. I changed it to <code>Blake - Liftoff</code>.",
+            "Change yours to how you feel like, then click <code>Next</code> to submit it."
+        ]
+    },
+    {
+        img: "images/samba_screenshots/step06.png",
+        cap: [
+            "Almost ready! Click <code>Finish</code> to complete the creation process.",
+            "You may want to leave that checkbox checked."
+        ]
+    },
+    {
+        img: "step07.png",
+        cap: [
+            "One final step in this process is adding the credentials to access the server.",
+            "Enter your username and password and check the <code>Remember my credentials</code> box.  Doing this will have Windows remember this server in the future.",
+            "Click <code>OK</code> to complete the process."
+        ]
+    },
+    {
+        img: "step08.png",
+        cap: [
+            "You should now be able to access your Samba share!",
+            "Keep in mind, this is not access to the entire server, but part of it.",
+            "If you would like to change that, modify your Samba configuration on the server."
+        ]
+    }
+];
+
+window.addEventListener('load',() => {
+    // Run this only if it exists
+    if(document.querySelector("#samba_slides",slides) !== null){
+        let samba_slideshow = new SlideShow("#samba_slides",samba_slides);
+        samba_slideshow.init();
+    }
+}
+</script>
+
 <div class="deck" id="samba_slides">
     <div class="slides">
         <div class="slide">

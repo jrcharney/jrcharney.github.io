@@ -5,11 +5,26 @@
 // I intially though I should make the methods static, but then
 // I realized I need to make an instance for a slideshow.
 // TODO: Use JSONP data
+import {Slide} from 'slide.js'
+
 class SlideShow {
-    constructor(name){
+    constructor(name,sides){
         // TODO: make sure the deck has a class called "slides"
         this.deck     = document.querySelector(name);
-        this.slides   = this.deck.querySelectorAll(".slides > .slide");   // children should have the slide class
+        if(slides === undefined){
+            // If we don't use a JSON set of slides, search for sides in this deck.
+            this.slides   = this.deck.querySelectorAll(".slides > .slide");   // children should have the slide class
+        } else {
+            //this.slides = slides;
+            this.slides = document.createElement("div");
+            this.slides.classList.add(".slides");
+            Array.from(slides).forEach(slide => {
+                let s = new Slide(slide.img,slide.cap);
+                this.slides.append(s.make());
+            })
+            this.deck.append(this.slides);
+
+        }
         this.prev_ctl = this.deck.querySelector(".prev_ctl");
         this.next_ctl = this.deck.querySelector(".next_ctl");
         this.index    = 0;                    // slide position

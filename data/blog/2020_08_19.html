@@ -1,0 +1,55 @@
+<h2>Stewie</h2>
+<p class="date">August 19, 2020</p>
+<p>There are two projects that I like that allow for using Spotify on the command line in Linux. They both are written in <a href="https://rust-lang.org/">Rust</a>, they both use <a href="https://doc.rust-lang.org/cargo/">Cargo</a> as a package manager, they both are available <a href="https://crates.io/">crates.io</a>, and they both need to be forked.</p>
+<p>Enter a new project I a proposing called <a href="./stewie"><b>Stewie</b></a>. Stewie (which is a better name than STUIE (Spotify Textual User Interface Enhanced) is an amalgamation of <a href="https://github.com/Rigellute/spotify-tui">Rigellute's <code>spotify-tui</code></a> and <a href="https://github.com/hrkfdn/ncspot/">hrkfdn's <code>ncspot</code></a>. Both of these applications are 100% written in Rust, both of them use the <a href="https://docs.rs/cursive/0.15.0/cursive/"><code>cursive</code> library (which is based on <a href="https://invisible-island.net/ncurses/"><code>ncurses</code></a>), both of them have flaws.</p>
+<h3>spotify-tui</h3>
+<h4>Pros</h4>
+<p><code>spotify-tui</code> is laid out in the familiar desktop interface format that the official Spotify desktop application uses.</p>
+<h4>Cons</h4>
+<p><code>spotify-tui</code> uses an external project called <a href="https://github.com/ramsayleung/rspotify"><code>rspotify</code></a> for authentication. <code>rspoitfy</code> requires the user to set up a developer account to get API credentials. The user shouldn't have to do this.</p>
+<h3>ncspot</h3>
+<h4>Pros</h4>
+<p><code>ncspot</code> does not require you to set up a Spotify developer account. You log in with your typical user credentials.</p>
+<p>The layout is in tabs, which I think is a good idea if you are running this app in frame in a terminal multiplexer or are using a small screen, it needs improvement.</p>
+<h4>Cons</h4>
+<p>In some terminal setups, <code>ncspot</code> will not work. You will get a message saying it is incompatible. This happens if you modify your terminal to do things like use <a href="http://tmux.sourceforge.net/"><code>tmux</code></a> or use a terminal that supports 256 colors or more.</p>
+<p>The keybindings were also cantankerous. This is what made using <code>ncspot</code> difficult.</p>
+<h3>stewie</h3>
+<p>Both of these applications have their strenghts and weaknesses, and their developers seem to have different ideas as to how their applications can work. So what can we do to fix this problem?</p>
+<figure>
+    <img src="images/why_dont_we_have_both.gif" alt="Why don't we have both?">
+    <figcaption>¡Nuestra pequeña superheronia!</figcaption>
+</figure>
+<p><code>stewie</code> aims to be the best of both applications. The great thing about github is that you can fork other people's projects and make a better application of your own.</p>
+<p>I wish this could have been my LaunchCode capstone project, but it's a little late in the game to pivot, on top of that the LaunchCode folks seem interested in developers make business applications. LightniNG get's a pass because weather constantly has influence of commerce, hence why NOAA and the NWS are bundled up into the Department of Commerce.</p>
+
+<h3>Requirement: Spotify Premium</h3>
+<p>As with any Spoitfy application written by a third party, this application will only work if you have a premium account, which honestly for $10 per month is more than a fair price for access to all the streaming music and podcasts you can have access to.</p>
+<p>And yes, there's the argument that the musicians are still not getting their fair share of the revenue. Blame the record labels for that not the people who make access to the music available through streaming.  This was the same problem 20 years ago where the record labels had been screwing the artists when along comes Napster to be the perfect scapegoat.</p>
+<p>If the same problem from 20 years ago exists that was also around 30 years ago and prior, maybe it isn't the fault of the technology that distributes the artist music but the fault of the record label who takes in all the revenue from Spotify but still give their artists a fraction of a cent each time a song is played to begin with.</p>
+<p>The best thing you can do is support independent artists, go to their concerts, and buy a T-shirt or physical record.</p>
+<p>Streaming music platforms are a convenience compared to the old days of tap players, CD players, <i>piracy</i>, and radio.</p>
+<p>Spotify is not the bad guy here. The recording industry has, is, and will always be the villain so as long as the industry doesn't pay artists their fair share.</p>
+<figure>
+    <img src="images/hometaping.jpg" alt="Home taping is killing record industry profits! We left this side blank so you can help.">
+    <figcaption>Mixtapes: Raging against the machine since 1963! <a href="https://www.amazon.com/s?k=audio+cassette+tapes&ref=nb_sb_noss">You can help!</a></figcaption>
+</figure>
+<h3>Features</h3>
+<p>I've stated some of the things I want to with this app already, but let's make sure I didn't skip over anything so I remember to add them to my application in the future.</p>
+<ul>
+    <li><b>Responsive Application Design (RAD)</b> - Much like web applications have <a href="https://www.w3schools.com/html/html_responsive.asp">Responsive Web Design (RWD)</a>, <code>stewie</code> will make use the layouts used in <code>spoitfy-tui</code> and <code>ncspot</code>. One for large window space the other for small window space.</li>
+    <li><b>User-friendly Login</b> - <code>ncspot</code>'s greatest strength. No need to set up a developer account. Save those developer slots for your own applications. Maybe even a fork of <code>stewie</code>.</li>
+    <li><b>Familiar Keybindings</b> - There's some software that lets you use media keys to control playback. Hope to integrate that.</li>
+    <li><b>Easy to Use!</b> - Use <kbd>Tab</kbd> and <kbd>Shift+Tab</kbd> to move between things.</li>
+    <li><b>Basic visualization</b> - They'll likely work best on a computer running the application, not so much if you remote into it. All the more reason for me to test this on my hacktop.</li>
+</ul>
+<h3>The Future</h3>
+<p><code>stewie</code> will eventually have a <abbr>GUI</abbr> version similar to <a href="https://webamp.org/">Webamp</a> (or <a href="https://desktop.webamp.org/">Desktop Webamp</a>) that will have all the <a href="http://www.geisswerks.com/milkdrop/">Milkdrop</a>/<a href="https://butterchurnviz.com/">Butterchurn</a> visualization so that a new generation of music fans, artists, and demoscene enthusiasts can enhance their musical experience.</p>
+<p></p>While Webamp is a Node.js application, in the interest of using Rust I'm going to see if I can use <a href="https://lib.rs/gui">a Rust GUI library.</a>. There are many options. I need to decide which would be best. At any rate <code>stewie-gui</code> (which could be called <code>brian</code>) will be a separate project and one that I hope will not take as long as that novel Brian has been working on.</p>
+<figure>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/d-BfjHbHj60" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>Hopefully I won't need to make my own version of Butterchurn called Cool Hwip.</figcaption>
+</figure>
+<p>A Trello Board has been set up, but there probably won't be any major developments until after I finish LaunchCode Liftoff.</p>
+<p>There also might be some <code>tmux</code> status bar integration with <a href="https://github.com/noctuid/zscroll"><code>zscroll</code></a>. I might rewrite that in Rust.</p>
+<p>Keep an eye on <a href="https://github.com/jrcharney/stewie">this github repository</a> for progress on this project.</p>
