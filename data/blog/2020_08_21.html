@@ -1,0 +1,19 @@
+<h2>Turn the Page!</h2>
+<p class="date">August 21, 2020</p>
+<p>The more I work on this blog, the more I wish I had chosen to make this my project rather than the other thing I should be working on.</p>
+<p>At any rate, some good new out of all this is now you can browse posts page by page!</p>
+<p>There is now a paging bar at the bottom of this blog to which you can now browse by page.</p>
+<p>I think the next major improvement will be provide links to each individual posts and to truncate large pages.</p>
+<p>There probably won't be a tagging system. That might require database.</p>
+<p>One thing is for certain is this blog needs its own page rather than using the index...at least a component page, a la how Angular does thing.</p>
+<p>Speaking of Angular, I realized that all the projects here are HTTPS, however if you work on a project via localhost, you can't use some of the features that are exclusive to HTTPS that are available on some browsers.</p>
+<p>To rectify this problem, I will need to do a couple things.</p>
+<p>First, I could probably set up Node in general to support HTTPS. Richard Russell <a href="https://medium.com/@richardr39/using-angular-cli-to-serve-over-https-locally-70dab07417c8">wrote an article</a> on how to do this, but it has two flaws:</p>
+<ol>
+    <li>It's meant for developing Angular on Windows. Which is a terrible idea.</li>
+    <li>It doesn't mention anything about the second solution that I will mention in a bit.</li>
+</ol>
+<p>The good part about Richard's explaination is that it does explain hwo to create an HTTPS certificate.  If you own your own web domain, your hosting provider might offer using a service like <a href="https://letsencrypt.org/">Let's Encrypt</a>, which you should use.</p>
+<p>The second solution is to use <a href="https://www.npmjs.com/package/https-localhost"><code>https-localhost</code></a>, which does a lot of what Richard talks about.</p>
+<p>It's probably a good idea to install <code>https-localhost</code> from NPM, as it might allow you to use the SSL features in Angular that allow you to run <code>ng serve</code> with your HTTPS certificate.</p>
+<p>At any rate, I'll probably add more to this article later since something about my Manjaro Linux setup won't let me access my Angular program from another computer. It's probably another firewall issue set up by <a href="http://www.linux-pam.org/">PAM</a>. It's good that there is security on this thing, but there needs to be some easy instructions to allow for exceptions. I don't seem to have this problem with SSH or Samba.</p>

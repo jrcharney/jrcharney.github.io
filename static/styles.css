@@ -95,3 +95,11 @@ code {
     background-color: #000;
     color: #fff;
 }
+
+
+blockquote.oops {
+    border-radius: 5px;
+    border-left: 3px solid red;
+    box-shadow: var(--shadow);
+    padding: 3px;   
+}

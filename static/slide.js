@@ -2,14 +2,16 @@
  * A class for creating slides in a Slideshow.
  * TODO: Make various layout configurations
  */
-export class Slide {
+//export 
+class Slide {
     constructor(img,figcaption){
         this.img = img;
         this.cap = figcaption;  // NOTE: figcaption is an array of strings
     }
-    make() {
+    init() {
         let slide = document.createElement("div");
         slide.classList.add("slide");
+        let figure = document.createElement("figure");
         let image = document.createElement("img");
         image.setAttribute("src",this.img);
         image.setAttribute("alt",this.img.replace(/^.*[\\\/]/, ''));
@@ -26,7 +28,8 @@ export class Slide {
             para.innerHTML = this.cap;
             figcaption.append(para);
         }
-        slide.append(image,figcaption);
+        figure.append(image,figcaption);
+        slide.append(figure);
         return slide;
     }
 }

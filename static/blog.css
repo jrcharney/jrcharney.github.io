@@ -11,20 +11,30 @@
     text-shadow: var(--shadow);
 }
 
-#blog > article > figure {
+#blog > article > figure,
+#blog > article > ol > li > figure,
+#blog > article > ul > li > figure,
+#blog > article > blockquote > figure {
+    text-align: center;
     border-radius: 5px;
     box-shadow: var(--shadow);
     padding: 3px;
 }
 
 /* Figures generally store images */
-#blog > article > figure > img {
+#blog > article > figure > img,
+#blog > article > ol > li > figure > img,
+#blog > article > ul > li > figure > img,
+#blog > article > blockquote > figure > img {
     object-fit:contain; 
     max-width: 800px;
 }
 
 /* Figures can also be used to store code samples */
-#blog > article > figure > pre {
+#blog > article > figure > pre,
+#blog > article > ol > li > figure > pre,
+#blog > article > ul > li > figure > pre,
+#blog > article > blockquote figure > pre {
     background-color: #000;
     color: #fff;
     font-family: monospace;
@@ -36,7 +46,18 @@
     overflow: auto;
 }
 
-#blog > article > figure > figcaption {
+/* iframes will generally contain videos from YouTube */
+/*
+#blog > article > figure > iframe,
+#blog > article > ol > li > figure > iframe,
+#blog > article > ul > li > figure > iframe,
+#blog > article > blockquote > figure > iframe {}
+*/
+
+#blog > article > figure > figcaption,
+#blog > article > ol > li > figure > figcaption,
+#blog > article > ul > li > figure > figcaption,
+#blog > article > blockquote > figure > figcaption {
     font-size: 9pt;
     text-align: center;
     margin-top: 2px;
@@ -49,4 +70,44 @@
     border-left: 3px solid var(--accentbg);
     box-shadow: var(--shadow);
     padding: 3px;   
+}
+
+#blog > #pagebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#blog > #pagebar > button {
+    width: 50px;
+    height: 50px;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px outset #088;
+    border-radius: 50%;
+    box-shadow: none;   /* TODO: Add one later */
+    background-color: #333;
+    color: #088;
+    transition: all ease 0.5s;
+}
+
+#blog > #pagebar > button:hover {
+    border-color: #0ff;
+    box-shadow: 0 0 5px 5px #0ff;
+    color: #0ff;
+}
+
+#blog > #pagebar > button:disabled {
+    cursor: not-allowed;
+    font-weight: normal;
+    border: 3px solid #333;
+    color: #444;
+    background-color: #333;
+}
+
+#blog > #pagebar > button:disabled:hover {
+    border-color: #333;
+    box-shadow: none;
 }

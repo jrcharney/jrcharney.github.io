@@ -210,103 +210,10 @@ let samba_slides = [
 
 window.addEventListener('load',() => {
     // Run this only if it exists
-    if(document.querySelector("#samba_slides",slides) !== null){
-        let samba_slideshow = new SlideShow("#samba_slides",samba_slides);
-        samba_slideshow.init();
-    }
-}
-</script>
-
-<div class="deck" id="samba_slides">
-    <div class="slides">
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step01.png" alt="step01">
-                <figcaption>
-                    <p>Right click on <code>This PC</code> and look for the <code>Add a network location</code>. Click on that.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step02.png" alt="step02">
-                <figcaption>
-                    <p>You'll be taken to the Add Network Location Wizard. Click <code>Next</code>.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step03.png" alt="step03">
-                <figcaption>
-                    <p>You will be asked where you want to create this network location.</p>
-                    <p>Since there is only one option, it should be pretty obvious whick item it click.</p>
-                    <p>Click <code>Choose a custom network location</code> then click <code>Next</code>.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step04.png" alt="step04">
-                <figcaption>
-                    <p>You will then be asked to specify the location of Samba server.</p>
-                    <p>Samba addresses are in the format <code>\\SERVERNAME\DIRECTORY</code>.</p>
-                    <p>Since we stated that <code>blake</code> was the server name, and that the only accessible directory on Blake would be the <code>liftoff</code> directory, the address will be <code>\\blake\liftoff</code>.</p>
-                    <p>Click <code>Next</code>.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step05.png" alt="step05">
-                <figcaption>
-                    <p>To make our server easy to find on the computer, we need to set a name for the network. As you can see in the illustration <code>liftoff (blake (Samba 4.12.3))</code> was automatically generated as a name. I changed it to <code>Blake - Liftoff</code>.</p>
-                    <p>Change yours to how you feel like, then click <code>Next</code> to submit it.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step06.png" alt="step06">
-                <figcaption>
-                    <p>Almost ready! Click <code>Finish</code> to complete the creation process.</p>
-                    <p>You may want to leave that checkbox checked.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step07.png" alt="step07">
-                <figcaption>
-                    <p>One final step in this process is adding the creditials to access the server.</p>
-                    <p>Enter your username and password and check the <code>Remember my credentials</code> box.  Doing this will have Windows remember this server in the future.</p>
-                    <p>Click <code>OK</code> to complete the process.</p>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="slide">
-            <figure>
-                <img src="images/samba_screenshots/step08.png" alt="step08">
-                <figcaption>
-                    <p>You should now be able to access your Samba share!</p>
-                    <p>Keep in mind, this is not access to the entire server, but part of it.</p>
-                    <p>If you would like to change that, modify your Samba configuration on the server.</p>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-    <!-- These two buttons are last so that they can appear on top -->
-    <button class="slide_ctl prev_ctl" title="Previous Slide">&#10094;</button>
-    <button class="slide_ctl next_ctl" title="Next Slide">&#10095;</button>
-    <!-- TODO: view this as a list in print view. -->
-</div>
-<script type="text/javascript">
-window.addEventListener('load',() => {
-    // Run this only if it exists
-    if(document.querySelector("#samba_slides") !== null){
-        let samba_slides = new SlideShow("#samba_slides");
-        samba_slides.init();
-    }
+    //if(document.querySelector("#samba_slides") !== null){
+    let samba_slideshow = new SlideShow("#samba_slides",samba_slides);
+    samba_slideshow.init();
+    //}
 }
 </script>
 <p>So was it worth all that trouble just to get this project set up. Yes.</p>
