@@ -30,7 +30,9 @@
     max-width: 800px;
 }
 
-/* Figures can also be used to store code samples */
+/* Figures can also be used to store code samples 
+ * Their contents should align left.
+ */
 #blog > article > figure > pre,
 #blog > article > ol > li > figure > pre,
 #blog > article > ul > li > figure > pre,
@@ -38,6 +40,7 @@
     background-color: #000;
     color: #fff;
     font-family: monospace;
+    text-align: left;
     border: 1px inset #fff;
     padding: 1px;
     font-size: 12pt;
@@ -45,6 +48,18 @@
     margin-right: 3px;
     overflow: auto;
 }
+
+/* It's probably a good idea to stick anything (including lists) 
+ * inside a div rather than making a style for other element if
+ * the element in a figure is not an img or pre
+ */ 
+#blog > article > figure > div,
+#blog > article > ol > li > figure > div,
+#blog > article > ul > li > figure > div,
+#blog > article > blockquote figure > div {
+    text-align: left;    
+}
+
 
 /* iframes will generally contain videos from YouTube */
 /*
