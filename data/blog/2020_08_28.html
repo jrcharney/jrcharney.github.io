@@ -1,0 +1,25 @@
+<h2>The News Boat</h2>
+<p class="date">August 28, 2020</p>
+<p>I have about 17 days to complete a huge chunk of my application. (Much sooner than <a href="https://twitter.com/beforeyandere">a certain video game</a> will ever be.)</p>
+<p>Naturally, I want to create an application that provides just a little more than the <abbr title="Minimum Viable Product">MVP</abbr> and demonstrates my skills as a developer.</p>
+<p>But the deadlines for the first half of Liftoff were clouded with the same two HackerRank questions which the folks who are running the program would rather be written in Java (which takes about 15 lines of code on one of these exercises) that in two lines or less of JavaScript can easily be done.</p>
+<p>Code should be <b>succinct</b>, that is it should be brief and clearly expressed. The message I am getting from my mentor seems to say "there is no room for clever tricks". While I agree that there is no room for shortcuts, there's always room for improvement.</p>
+<p>One of the things I have learned this week is that Node.js can work with SQL databases. I spoke about this previously. How it does it requires a little cleverness.</p>
+<p>Before I apply this to my application, I want to test it out with a dummy application first.</p>
+<p>Setting up the SQL database was pretty easy considering how MariaDB is very similar to MySQL.  Securing it was also pretty easy. There's like a couple of commands that should be run. I'll share them later.</p>
+<p>Tonight I want to talk about another application that could be helpful in my use of RSS in Lightning: <a href="https://newsboat.org/"><code>newsboat</code></a>.</p>
+<p><b>newsboat</b> is a command line RSS/ATOM reader. It might not process images like some RSS Readers in a GUI, but I'm content with that. RSS is supposed to be simplistic. Basically a newsreader providing text and links.</p>
+<p>LightniNG will likely have the same functionally as <code>newsboat</code> or the <a href="https://mesonet.agron.iastate.edu/wx/afos/">Iowa Environment Mesonet</a> (a.k.a. Mesonet). Mesonet aggregates messages from the National Weather Service, but this data is more geared toward scientists, meteorologists, and storm chasers. My application is more geared toward the general public.</p>
+<p>Then there is the notification feature, which thanks to some recent upgrades a the United States Geological Survey, their <a href="http://earthquake.usgs.gov/earthquakes/map/">Earthquake webpage</a> now has notification features (which are new) in addition to the RSS feeds they've had for about a couple decades now.</p>
+<p>One other thing to note: a few weeks ago, I had though about making a project that was combination of Markdown and Mediawiki.  It appears someone did that already as a Vim Plugin. <a href="https://vimwiki.github.io/"><b>VimWiki</b>b></a> is a pretty nice plugin. It along with <a href="https://taskwarrior.org/">Taskwarrior</a> and <a href="https://timewarrior.net/">Timewarrior</a>. Time Warrior appears to show schedules in sort of a <a href="https://www.gantt.com/">Gantt</a>-like manner.</p>
+
+<p>There was one other program of interest that used <a href="https://www.atlassian.com/agile/kanban">Kanban</a>, which Liftoff recommends since we're dabbling in Agile development, but it is written in <a href="https://www.haskell.org/">Haskell</a>, which still doesn't have a version for ARM or ARM 64 (<code>aarch64</code>) yet, thought there are promises that a version is in the works.</p>
+<p>If there had been one, I would probably have suggested trying to use these two URLs to install <code>stack</code>, <code>cabal</code>, <code>ghcup</code>, and <code>ghc</code>.</p>
+<figure>
+    <pre>curl -sSL https://get.haskellstack.org/ | sh
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+    </pre>
+    <figcaption>I want me a Haskell!</figcaption>
+</figure>
+<p>All the prerequistes for using it are there, there just isn't a distribution. Well, at least not one that is binary. (Not sure why the scripts chose to install a binary install other than time.)</p>
+<p>There are alternatives, like <a href="https://github.com/jceb/vim-orgmode">Jceb's <code>vim-orgmode</code></a> which offers a Vim version of Emac's <a href="https://orgmode.org/"><code>orgmode</code></a></p>
