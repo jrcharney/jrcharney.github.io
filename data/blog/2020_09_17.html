@@ -1,0 +1,33 @@
+<h2>A Full Stack</h2>
+<p class="date">September 17, 2020</p>
+<p>Has it been three weeks?!</p>
+<p>Well, I have been hard at work.  Last week I found out that switching to <a href="https://www.postgresql.org/">PostgreSQL</a> would be a wise decision for many reasons including a software package called <a href="https://postgis.net/">PostGIS</a> which adds spatial database extensions to Postgre, <a href="https://node-postgres.com/">Node Postgres</a> which offers a thorough collection of Node modules for interfacing with Postgres, and <a href="https://sequelize.org/">Sequelize</a> which provides an <abbr title="Object-Relational Mapping">ORM</abbr> similar to how <a href="https://hibernate.org">Hibernate</a> is used in Java. Combine this with <a href="https://angular.io/">Angular</a> (which uses <a href="https://expressjs.com/">Express</a>) and run it on a <a href="https://www.raspberrypi.org/">Raspberry Pi 4</a> (because <a href="https://www.arm.com/">ARM architecture</a> is the future) using <a href="https://manjaro.org/">Manjaro Linux</a> (<a href="https://wiki.archlinux.org/">Arch Linux</a> distros, for the win!) and we have a full stack on an ideal platform that show the potential for a lot of technologies.</p>
+<p>That's a lot of stuff to describe for a project that has limited time left, and I haven't even mentioned the front-end map layers</p>
+
+<figure>
+    <!-- TODO: Might need to put this in a div if it centers things -->
+    <ul>
+        <li>Raspberry Pi 4 - Hardware</li>
+        <li>Manajro Linux ARM (an Arch Linux Distro) - Operating System</li>
+        <li>PostgreSQL - Database</li>
+        <ul>
+            <li>PostGIS - <abbr title="Geospatial Informaton System">GIS</abbr> Extensions</li>
+        </ul>
+        <li>Node.js - Software</li>
+        <ul>
+            <li>Node Postgres (<code>pg</code>, among other packages) - Database integration</li>
+            <li>Sequelize (<code>sequelize</code>) - ORM</li>
+            <li>Express.js (<code>express</code>, among other packages) - Basic framework and session handling. (Don't forget the sessions!)</li>
+            <li>Angular (<code>@angular/cli</code>, among other packages) - Framework</li>
+        </ul>
+    </ul>
+    <figcaption>A quick review of that last paragraph</figcaption>
+</figure>
+
+<p>There's also a few security features like 12-factor authentication, but we'll talk about that some other time.</p>
+<p><b>This <i>is</i> a full-stack application!</b>  I should do a better job of writing down all the steps to make something like this, including how to use HTTPS instead of HTTP (because, I'm sick of tutorials that make a big deal about being about to build an application that runs on <code>localhost</code>, when a better solution is to run an application that is on the same network as your local host (your computer).  It's why I put in the extra effort, and complain about why Google not letting you run your HTTPS server with your own signed certificates is a bunch of nonsense! (Of course my local certificates are going to be "insecure" by Google's standards. IT'S RUNNING ON MY LOCAL NETWORK!)</p>
+<p>Knowing how to handle network issues is the next level up from knowing how to handle computer issues, because the router is basically the computer that allows every other computer in the house to communicate with the outside world.  If you've had service done with a company like AT&amp;T or Spectrum or Verizon, you know that the only thing they really do these days is swap out the box with a different box and transfer settings. The old box gets junked, which seems like a waste of resources.</p>
+<p>That's kind of why I want to get back into learning computer networking, but not with Cisco this time but something that actually has <i>practical applications</i>: <a href="https://www.gns3.com/">GNS3</a>.</p>
+<p>I'm not sure if I mentioned this before on this blog, but I've never really seen too many local companies in the area with hardware that has the Cisco logo on it. So a better investment would be to learn how to work with networking software that works on many devices rather than one specific brand.</p>
+<p>It's a lonely path. It might not have any big brand names or logos tied to it, but much like everything else I work with, I can find out how to fix it easily and it just works!</p>
+<p>A quick aside: last week, I <a href="https://github.com/jrcharney/java-web-dev-techjobs-oo/tree/master/ts-bonus/">rebuilt one of my Java assignments in Typescript</a>. Not only was this helpful in my understanding of TypeScript, but it shows that Java can be replaced with TypeScript. Well, except for the <code>hashcode</code> functions. Which I guess I'll figure that out some other time.</p>
