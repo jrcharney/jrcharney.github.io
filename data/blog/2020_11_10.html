@@ -1,0 +1,76 @@
+<h2>I said REGULARLY SCHEDULED PROGRAM! a.k.a. How to use Node to run a web server.</h2>
+<p class="date">November 10, 2020</p>
+<p>OK, so the last couple posts were venting. Time to get down to the brass tax.</p>
+<p>I want to cover something that is really important: Running a simple node server to display an HTML file...or other files too.</p>
+<p>Digital Ocean has <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module">a good tutorial</a>, but its more than what is necessary.</p>
+<p>The tutorial has an emphasis on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Promises</a> when I'd really like to make a more <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await">asynchronous</a> solution, especially after a couple of my more recent attempts to work on a LaunchCode Liftoff project.</p>
+<p>Last month tinkering with my Cloudburst project, but the one module I was so elated to use in it, <a href="https://www.npmjs.com/package/node-geocoder">node-geocoder</a> still uses two deprecated package, <a href="https://www.npmjs.com/package/request">request</a> and <a href="https://www.npmjs.com/package/request-promise">request-promise</a>, that can't be used in TypeScript or Angular projects. The rotten little demon that ruined such a cool project was some Amazon Web Services package called <a href="https://www.npmjs.com/package/aws4">aws4</a>.</p>
+<p>In the future, I would like to remake node-geocoder that doesn't have things like AWS ruining it. It also will need a <code>@types</code> module to replace the old <a href="https://www.npmjs.com/package/@types/node-geocoder">@types/node-geocoder</a> so that it works with TypeScript.</p>
+<p>There was a gap in a few thing that LaunchCode overlooked when it was teaching TypeScript and angular like how it is necessary to use a <code>@type</code> module to use a lot of Node modules written in JavaScript in TypeScript for Angular or other TypeScript-heavy frameworks.</p>
+<p>I'm hoping this will help me create something that makes using TypeScript more natural, since JavaScript should definitely be typed.</p>
+<p>The other issue I want to fix is the confusion of setting up modules. There are three differen ways to do it. the <code>require()</code> way is nice, but many people like to use <code>import</code>/<code>export</code>.</p>
+<p>There's also the shift from <a href="https://palantir.github.io/tslint/">TSLint</a> to <a href="https://eslint.org/">ESLint</a> which Angular appears to not have does yet, as it keeps creating a <code>.tslint</code> file, when there should be instructions for how to migrate to ESLint. I would like to share instructions on how to do that later.</p>
+<p>Today, today is all about just getting a Node server created. No <a href="http://expressjs.com/">Express</a>. No <a href="https://socket.io/">Socket.io</a>. No <a href="https://www.npmjs.com/package/axios">Axios</a>. Just straight Node.js.</p>
+<p>First a little backstory.</p>
+<p>Python has a means of doing this in one command, <code>http.server</code>.</p>
+<figure>
+    <pre>python -m http.server 8000 --bind 127.0.0.1</pre>
+    <figcaption>Easy Breezy!</figcaption>
+</figure>
+<p>Here you go to <code>http://127.0.0.1:8000/</code> and it finds the nearest <code>index.html</code> file as the home page.</p>
+<p>But you don't want to use Python. You want to use Node.</p>
+<p>Node can do this, but there will need to be a little more work involved.</p>
+<p>Here's what I'm working with at the moment. There will likely be a better version of this in the future.</p>
+<figure>
+    <pre>/* @file: app.js
+ * Run: node app.js 
+ * Goto: http://localhost:8000/
+ */
+const http = require('http');
+const fs   = require('fs').promises;
+const host = 'localhost';   // or '127.0.0.1'. If you are using a zeroconf situation, you can use something else on your local network.
+const port = 8000;          // or use 3000. That's common
+
+// __dirname is the current path.
+// index.html will be the page that opens, but it needs a slash at the beginning.
+const page = __dirname = '/index.html';
+
+let indexfile;  // I'm not sure why I even need this
+
+// server creates a server with a request listener function
+const server = http.createServer((req,res) => {
+    res.setHeader("Content-Type","text/html");  // Set the HTTP Content-Type
+    res.writeHead(200);  // "OK"
+    res.end(indexFile);
+});
+
+// We use the File System (fs) library to read our file.
+// This is on the global level so that the page only loads once.
+fs.readFile(page).then(contents => {
+    indexFile = contents;  // Still a little perplexed as to what this is for.
+    server.listen(port,host,() => {
+        console.log(`Server is running on http://${host}:${port}/`);
+    });
+}).catch(err => {
+    console.error(`Could not read ${page} file: ${err}`);
+    process.exit(1);
+}) 
+    </pre>
+    <figcaption>Instant server!</figcaption>
+</figure>
+<p>As you can see, i have a couple notes with some doubts about if it is absolutely necessary to use the <code>indexFile</code> variable.</p>
+<p>Basically what happens here is that we run <code>node app.js</code> which creates a server at <code>http://localhost:8000/</code> using <code>index.html</code>.</p>
+<p>This program will also let you use and external CSS file and any JavaScript files as well as load any content.</p>
+<p>Right now this is simple prototype. I'm sure as I continue to learn what works, a more established version of that script will be posted. (I really need to use Gists more!)</p>
+<p>As web projects depend more on the HTTP protocol, using the <code>file:///</code> prefix becomes less of an option.</p>
+<p>The other thing to think about is using other pages that use different paths. This is called "routing". It's one of the first questions you're asked about when creating a new Angular project, to which the answer for new developers is likely "No". (SCSS on the other hand, us a definite yes for a choice of styles though.)</p>
+<p>I'm hoping to finally get my Liftoff project wrapped up this week and write about it here. It's taken about four times to get it right, but there were some omissions in my education that I hope to patch up, which hopefully will make the program better for everyone, even if they were not enrolled.</p>
+<p>Node projects are very democratic. Many modules depend on third-party developers and it's ideal to work with projects that are committed to continuous development. It is important to work everyday, even if you are between careers to make sure that your projects are maintained and provide a little more than the minimum viable product (MVP) once you've created MVP so that it stands out from the crowd.</p>
+<p>I have done a lot of things that may seem like I've been rowing against the current of a river that is going in th other direction.</p>
+<p>In John F. Kennedy's speech ar Rice University, known as the "We choose to go to the Moon" speech, there is a lot of emphasis on "We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard;" but it overlooks the other important part of that statement: "because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone. (sic)"</p>
+<p>A lot of people wonder, what is the true purpose to learn programming? Is it to repeat the motions of others beforehand, or to accomplish something greater? To do that organization and measurement of our resources and skill.  What makes going the extra mile and spending a few dollars more at some small shop to get something closer to what we want do rather than driving down to Wal-mart to get something cheap that offers the bare minimum but leaves us wanting something better.</p>
+<p>I'm not asking to go all out and splurge and write everything. Chances are whoever you want to hire you will look at your example with all the bells and whistles on it and take it for themselves. They'll have the resource to patent it, claim it was theres, and try to tell you to cease doing whatever your doing for the thing they knowingly took. So they don't have to pay the real creator because they can pay $300 for a patent and you can't. That's another reason to keep it close to MVP, and keep the featureful version for yourself until the time comes that when the guys who ripped you off have egg on their face when their knockoff doesn't work.</p>
+<p>But such things are rare, and shouldn't discourage you from doing your best or making something awesome.</p>
+<p>Be proud of your work. And if you are looking for a job, code in such a way that you provide a sample of what's good, but can offer more when you get the job.</p>
+<p>Anyone can make lemonade. The guys who get hired to do it are usually juicing the lemons, not mixing a packet of Country Time.</p>
+<p>Time to get back to work.</p>

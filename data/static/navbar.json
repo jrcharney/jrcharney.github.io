@@ -18,9 +18,24 @@
                 "title" : "Active Project"
             },
             {
-                "text" : "⚡LightniNG⚡",
+                "text" : "<s>⚡LightniNG⚡</s>",
                 "url" : "./lightniNG",
                 "title" : "Angular based web application for weather notifications"
+            },
+            {
+                "text": "<s>Cloudburst</s>",
+                "url" : "./cloudeburst",
+                "title": "Command line weather. Need to be rewritten."
+            },
+            {
+                "text": "<s>Blitz</s>",
+                "url" : "./Blitz",
+                "title": "Second attempt at LightniNG."
+            },
+            {
+                "text": "ScintillatiNG",
+                "url": "./ScintillatiNG",
+                "title": "Final attempt at my app. Everything right this time!"
             },
             {
                 "text" : "Github",
