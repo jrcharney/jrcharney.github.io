@@ -1,0 +1,117 @@
+<h2>Sound System</h2>
+<p class="date">November 14, 2020</p>
+<figure>
+    <img src="images/edex-ui_wsl2_tmux_ncspot.png" alt="edex-ui wsl2 tmux ncspot"/>
+    <figcaption>Strap in. Today's post is going to be awesome!</figcaption>
+</figure>
+<p>My cursed ADHD had me tinkering with another fun project that wasn't my Liftoff project again.</p>
+<p>I thought I'd get some things working in WSL2 that usually work on my Linux box.</p>
+<p>First up, if anyone remembers <i>Tron: Legacy</i>, you probably remember that computer interface that made it look like Encom made this hacker-like interface. It's mostly for show, but that didn't stop someone from making a functional version of it. Enter <a href="https://github.com/GitSquared/edex-ui">EDEX-UI</a>. While I couldn't get EDEX-UI to work on WSL2 without having to make some resource heavy GUI application run, there was a Windows version of it, and the windows version uses Powershell. (I know. "Gross!") but in Powershell you can launch WSL2 if you are using Ubuntu 20.04 LTS with <code>ubuntu2004.exe</code> and you can work in Bash or Zsh or whatever shell you like, including Tmux.</p>
+<p>However, there is one thing that you need to do to really make WSL2 shine: Get PulseAudio working and run Spotify in the command-line.</p>
+<p>"But Jason, you can Runs Spotify on Windows in the background on Windows?" Yes, but to really impress people, you should show them how to do it in a text interface. Mind you, that if you want to use <code>spotifyd</code>, <code>ncspot</code>, or <code>spotify-tui</code> (a.k.a. <code>spt</code>), you'll want to pay for that premium access on Spotify, which for $10/month, is a pretty good deal for no ads and the ability to use the developer features, which you will need for this experiment.</p>
+<p>This article may be updated in the near future. While I was successful to get <code>spotifyd</code> and <code>ncspot</code> working in WSL2, <code>spt</code> kind of stopped working in mid setup.  Eariler this year I promised I would learn how to use Rust and make an app that was sort of a combination of <code>ncspot</code> easy to use interface (which didn't require the need to set up any localhost) and <code>spt</code>'s ability to mimic Spotify's GUI in the text interface. So look out in 2021 for when that project shows up here.</p>
+<p>The advantages of using a text interface for Spotify offer not just a sly means to play music, but also an accessible one. You can run all these applications on a Raspberry Pi, namely the Raspberry Pi 4B. But compiling a Rust application on any platform can be resource intensive.  It took me several times to get these applications to compile on my Pi4 because the process would slow down toward the end and eventually die because it ran out of resources during compilation. But once I shut off as many things that I could to get the process working, the pay off was huge.</p>
+<p>When I did it again on my Dell XPS 13 (which is a really nice laptop), even this mighty piece of hardware had found compiling a Rust app to be resource intensive, provided it has way more than the Pi had and I didn't have to close anything, but it took some time for the compiling to take place.</p>
+<p>As I stated, I was mostly successful except when <code>spt</code> refused to complete the set up after it asked what default port I want to use.</p>
+<p>So when the time comes to fork which project to combine the two applications into one, the winner is <code>ncspot</code>.</p>
+<p>Hopefully, ncurses supports responsive application interfaces such that <code>ncspot</code>'s interface would be perfect for smaller windows, but larger windows would have <code>spt</code>'s style of interface. Login and set up would be completely based on <code>ncspot</code> since it doesn't requires having to establish developer credentials to use the program, just a username, password, and premium account.</p>
+<p>Just to be sure we are clear, I am not going to explain how to install WSL2 or Ubuntu 20.04 LTS. There's plenty of good sites that do that. I might post a link ot one of them later. This is for the after part.</p>
+<p>As a reminder, the best way to install any open source software on windows is to use <a href="https://chocolatey.org/install">Chocolatey</a>. We will use this to install anything in an administrative Powershell on the Windows side of things. The Linux side will use <code>apt</code> since we are using Ubuntu. So if you don't have Chocolatey, you should get it.</p>
+<p>Because Debian based systems (including Ubuntu and Raspbian) store there development resources in separate "dev" packages, we will need to download those. I'll describe them shortly.</p>
+<p>One thing that Ubuntu 20.04 LTS did not come with is <code>systemctl</code>. Maybe it's me using Manjaro and Arch Linux the past few months, but <code>systemctl</code> is a must have.</p>
+<p>in Bash (on WSL2), we need to install <code>systemctl</code>, but not the one in the <code>apt</code> repo. We need to get it using a <a href="https://github.com/DamionGans/ubuntu-wsl2-systemd-script">specials script that Damion Gans created</a>. We might want to do an quick update and upgrade.  I usually anythning I download from Github in a <code>~/Downloads/Software/github.com/</code> directory. This will be helpful for finding things later.</p>
+<figure>
+    <pre>sudo apt update && sudo apt upgrade -y
+mkdir -p ~/Downloads/Software/github.com/DamionGans/
+cd ~/Downloads/Software/github.com/DamionGans
+git clone https://github.com/DamionGans/ubuntu-wsl2-systemd-script
+cd ubuntu-wsl2-systemd-script
+./ubuntu-wsl2-systemd-script.sh
+exit</pre>
+    <figcaption>Install <code>systemctl</code></figcaption>
+</figure>
+<p>We need to exit WSL2 for the changes to take place. Probably the best thing you can do is run <code>ubuntu2004.exe</code> in a regular powershell so you can get back into the Linux system shortly after this takes place.</p>
+<p>When you return to Linux, run <code>systemctl status</code>. You should see a tree diagram of all the active and inactive processes that run in the background.</p>
+<p>For this next part we need to install some stuff to get the sound working in WSL2.</p>
+<figure>
+    <pre>sudo apt install pkg-config libasound2-dev libssl-dev libpulse-dev libdbus-1-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libncursesw5-dev xorg-dev
+    </pre>
+    <figcaption>More than what's required</figcaption>
+</figure>
+<p>I though I'd put the three lists used for the dependencies that each of the three needs into one list. Having all these items is better than having to go back and install something that was missing later.</p>
+<ul>
+    <li><code>spotifyd</code> will need the following packages: <code>libasound2-dev libssl-dev libpulse-dev libdbus-1-dev</code></li>
+    <li><code>ncspot</code> will need the following packages: <code>libncursesw5-dev libdbus-1-dev libpulse-dev libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev</code></li>
+    <li><code>spotify-tui</code> will need the follwoing packages: <code>sudo apt install pkg-config libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev xorg-dev</code></li>
+</ul>
+<p><code>spotifyd</code> will depended on some PulseAudio packages like <code>libpulse-dev</code>, but be on the lookout for other packages that might need to be installed like <code>libpulse0</code>, <code>libpulsedsp</code>, <code>libpluse-mainloop-glib0</code>, and <code>pulseaudio-utils</code></p>
+<p>The next thing we want to install is <a href="https://www.rust-lang.org/">Rust</a>. Rust is a young programming language that has some great potential, but as I stated earlier, the compiling process can get a little heavy. We will use the Rust package manager <code>cargo</code> to install our software.</p>
+<figure>
+    <pre>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh          # Install Rust
+cargo install spotifyd --locked
+cargo install ncspot
+cargo install spotify-tui</pre>
+    <figcaption>Not listed is the amount of time it will take for this process. Order a pizza.</figcaption>
+</figure>
+<p>Some packages may require the use of a <code>--locked</code> argument. I forget what it is for, but I would imagine that it may fall along they lines of why there is a <code>packages.json</code> file and a <code>packages-lock.json</code> file when you make a ndoe project.</p>
+<p><code>spotifyd</code> should run in the background whenever we use <code>ncspot</code> or <code>spt</code>.</p>
+<p>It seems like we can fire up <code>ncspot</code> or <code>spt</code> and play music, right? <b>WRONG!</b> We still need to set up <b>PulseAudio</b>.</p>
+<p>First we need to add <code>DISPLAY</code> and <code>PULSE_SERVER</code> variables near the end of <code>~/.bashrc</code>. So in a text editor (<code>vim</code>), add these lines.</p>
+<figure>
+    <pre># Create a DISPLAY server to use with VcXsrV or X410 in Windows.
+# We won't need to use them to play audio, but if you use a linux app that uses a GUI, you will need them.
+if [ -z ${DISPLAY} ]; then
+    export DISPLAY="$(ip route|awk '/^default/{print $3}'):0.0"
+fi
+
+# Create a PULSE_SERVER to allow audio
+# Note: pulseaudio.exe must be running in a powershell on Windows 10.
+if [ -z ${PULSE_SERVER} ]; then
+    export PULSE_SERVER="${PULSE_SERVER:-tcp:$(ip route|awk '/^default/{print $3}')}"
+fi</pre>
+    <figcaption>Include those comments!</figcaption>
+</figure>
+<p>While the <code>DISPLAY</code> variable is used with remote program or whenever you use a Linux system with a GUI, we won't need to use it in this tutorial, but it is important.</p>
+<p>The <code>PULSE_SERVER</code> variable is necessary for us to use PulseAudio.</p>
+<p>Save these changes.</p>
+<p>In an administrative Powershell, use Chocolatey to install PulseAudio</p>
+<figure>
+    <pre>choco pulseaudio</pre>
+    <figcaption>Easy!</figcaption>
+</figure>
+<p>Next you will need to make the following changes to the following files in a text editor that is in <b>administrative mode</b>:</p>
+<ul>
+    <li>In <code>C:\ProgramData\chocolatey\lib\pulseaudio\tools\etc\pulse\default.pa</code>:
+        <ul>
+            <li>On line 42, add <code> record=0</code> to the end of <code>load-module modulewaveout sink_name=output source_name=input</code></li>
+            <li>Line 42 should look like <code>load-module modulewaveout sink_name=output source_name=input record=0</code></li>
+            <li>On line 61, uncomment <code>#load-module module-native-protocol-tcp</code> and add <code> auth-ip-acl=127.0.0.1;172.16.0.0/12</code></li>
+            <li>Line 61 should look like <code>load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;172.16.0.0/12</code></li>
+        </ul>
+    </li>
+    <li>In <code>C:\ProgramData\chocolatey\lib\pulseaudio\tools\etc\pulse\daemon.conf</code>:
+        <ul>
+            <li>On line 39, uncomment <code>; exit-idle-time = 20</code> and change the setting to <code>-1</code></li>
+            <li>Line 61 should look like <code>exit-idle-time = -1</code></li>
+        </ul>
+    </li>
+</ul>
+<p>Save the changes to those files.</p>
+<p>In a non-administrative Powershell, try and run <code>pulseaudio.exe</code>. You should get a Windows Firewall Alert. Click Yes. If you are also told that windows will do a virus scan, don't worry about it. You should ignore it.</p>
+<p><code>pulseaudio.exe</code> will likely report <code>E: [(null)] daemon/main.c: Failed to load directory</code>. That's normal. It means that PulseAudio is running. You can use <code>CTRL+C</code> to stop it.</p>
+<p>Powershell doesn't have a <code>bg</code> or <code>fg</code> command like Linux has. So a better way of running PulseAudio in the background would be to use this command</p>
+<figure>
+    <pre>Start-Process -NoNewWindow pulseaudio.exe</pre>
+    <figcaption>The closes thing we have to <code>pulseaudio &amp;</code></figcaption>
+</figure>
+<p>Die hard Powershell users might notice we used <code>Start-Process</code> instead of <code>Start-Job</code>. <a href="https://stackoverflow.com/questions/185575/powershell-equivalent-of-bash-ampersand-for-forking-running-background-proce">StackOverflow provides an explanation for that</a>.</p>
+<p>We want our task to run in the background so that we can still use Powershell for other things, like running <code>ubuntu2004.exe</code></p>
+<p>To kill PulseAudio later, we will need to go to the Task Manager later, but a better way would probably to kill that process in the Powershell.</p>
+<p>If you have <code>grep</code> installed in Powershell, it will make things easier. (If you don't have it, use Chocolatey to get it.) Much like running <code>ps</code> in Linux, we can run <code>Get-Process</code> to list out a list of processes that are going on. The sixth column in the table should be <code>Id</code>. We can should only <code>pulseaudio</code>'s process ID number using this command. (Provided you use Chocolatey to get <code>awk</code> first, which in that case, pick up <code>sed</code>, <code>jq</code>, and <code>gawk</code>)</p>
+<figure>
+    <pre>Get-Process | gawk '$8~/pulseaudio/{print "$6"}'</pre>
+    <figcaption>"Look in the eight column for 'pulseaudio' and print the sixth column in each matching record."</figcaption>
+</figure>
+<p>Using Linux command in Powershell is much better than having to use Powershell's long and verbose commands.</p>
+<p>Finally, we can run one of our Spotify apps. In this case, let's run <code>ncspot</code>.</p>
+<p>Login with your username and password and start playing music.</p>
