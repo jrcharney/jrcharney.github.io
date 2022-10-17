@@ -120,3 +120,7 @@ temp/
 .history
 
 # End of https://www.gitignore.io/api/node,visualstudiocode
+
+# Prevent those Zone.Identifer files that are generated when copying stuff to WSL from showing up.
+# BTW, you can delete them. Simply `rm *Zone.Identifer`
+**/*Zone.Identifier
