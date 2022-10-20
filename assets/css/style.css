@@ -1,0 +1,82 @@
+/* File: assets/css/style.css
+ * Info: Styles for this webiste.
+ */
+
+
+ body {
+    background-color: #333;
+    color: #fff;
+    font-family: sans-serif;
+ }
+
+ a[href]:link {
+    color: #00C0C0;
+ }
+ a[href]:visited {
+    color: #00B0B0;
+ }
+ a[href]:active {
+    color: #00e0e0;
+ }
+ a[href]:hover {
+    color: #00f0f0;
+    /* TODO: do a transition */
+ }
+
+ header, nav, footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+ }
+
+ nav {
+    background-color: #000; 
+    color: #fff;
+    border: 1px solid #ff0;
+ }
+
+ nav > ul {
+    list-style-type: none;      /* remove the bullets */
+    display: flex;
+    flex-direction: row;        /* We'll change this to column in mobile */
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 90%;
+    border: 1px solid #0ff;
+ }
+
+ nav > ul > li {
+    display: block;
+    margin: 0;
+    min-width: 20%;
+    border: 1px solid #0f0;
+    text-align: center;
+    /* transition: all 0.5s ease; */    /* Apply this later when we set up our drop down menus */
+ }
+
+
+ /* I know it is counter intuitive, but if we want main and aside to be responsive, they need to be put into the same container. */
+ #content {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+ }
+
+ main {
+    width: 60%;                 /* Width should be about 60%, at least for computers. We'll worry about mobile and RWD later. */
+    border: 1px solid red;
+    padding: 3px;
+ }
+
+ aside {
+    width: 30%;                 /* Width should be about 30%, at least for computers. We'll worry about mobile and RWD later. */
+    border: 1px solid yellow;
+    padding: 3px;
+ }
+
+ footer {}
